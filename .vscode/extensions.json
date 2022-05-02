@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "orta.vscode-jest",
+    "graphql.vscode-graphql",
+    "eamodio.gitlens",
+    "github.copilot",
+    "sonarsource.sonarlint-vscode",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
