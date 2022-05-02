@@ -6,6 +6,11 @@
 ### API access
 
 Todo
+
+## Requirements
+- node 16.*
+- yarn
+
 ### Run the development server locally
 
 This is a [Next.js](https://nextjs.org/) project.
