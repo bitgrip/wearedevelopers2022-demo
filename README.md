@@ -25,18 +25,8 @@ For CSR based data fetching [API routes](https://nextjs.org/docs/api-routes/intr
 
 ### Generate API types
 
-The project stictly used [TypeScript](https://www.typescriptlang.org/). To use typed data from the first api touch, api based types are generated based on the schema from the CoreMedia Headless Server and the actual queries.
+The project stictly uses [TypeScript](https://www.typescriptlang.org/). To use typed data from the first api touch, api based types are generated based on the schema from the CoreMedia Headless Server and the actual queries.
 
 ```bash
 yarn coremedia-types
-```
-
-## Release process
-
-You can lookup the latest version and set a new one for `git flow` and `yarn version`:
-
-```bash
-git tag -l
-git flow release start [new version]
-yarn version --new-version [new version]
 ```
