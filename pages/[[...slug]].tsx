@@ -2,13 +2,13 @@ import React, { Suspense } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { join } from "lodash";
-import { Footer } from "../src/Types/elements/Footer";
+import { Footer } from "../src/types/elements/Footer";
 import { FooterSection } from "../src/Components/FooterSection/FooterSection";
 // import dynamic from "next/dynamic";
 import { HeaderSection } from "../src/Components/HeaderSection/HeaderSection";
 import { JobSearch } from "../src/Components/JobSearch/JobSearch";
-import { Navigation } from "../src/Types/Navigation/Navigation";
-import { Page } from "../src/Types/layout/Page";
+import { Navigation } from "../src/types/Navigation/Navigation";
+import { Page } from "../src/types/layout/Page";
 import {
   getNavigation,
   NavigationResponse,
