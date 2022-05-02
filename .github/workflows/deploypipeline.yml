@@ -34,4 +34,5 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'yarn'
+    - run: yarn
     - run: yarn build
