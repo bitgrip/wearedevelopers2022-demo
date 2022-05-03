@@ -36,3 +36,18 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn build
+
+  test_unittests:
+    needs: build
+    strategy:
+      matrix:
+        jestgroup: ['coremedia/types', 'logic']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn test --group=${{ matrix.jestgroup }}
