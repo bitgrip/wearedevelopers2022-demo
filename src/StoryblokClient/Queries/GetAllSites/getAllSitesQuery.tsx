@@ -3,15 +3,9 @@ import { gql } from "@apollo/client";
 
 export const getAllSitesQuery = gql`
   query GetAllSites {
-    content {
-      sites {
-        id
-        name
-        locale
-        root {
-          segment
-        }
-      }
+    Space {
+      id
+      domain
     }
   }
 `;

@@ -10,22 +10,9 @@ export const PagePrimaryContentPlacementNames: string[] = [
 
 export const getPageContentQuery = gql`
   query getPageContent($pagePath: String!, $placements: [String!]!) {
-    content {
-      pageByPath(path: $pagePath) {
-        id
-        title
-        grid {
-          placements(names: $placements) {
-            name
-            items {
-              id
-              type
-              name
-              title
-            }
-          }
-        }
-      }
+    Space {
+      id
+      domain
     }
   }
 `;
