@@ -8,7 +8,7 @@
 Todo
 
 ## Requirements
-- node 16.*
+- node 16.15.*
 - yarn
 
 ### Run the development server locally
