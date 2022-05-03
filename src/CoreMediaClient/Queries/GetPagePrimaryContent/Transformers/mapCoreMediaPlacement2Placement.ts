@@ -1,4 +1,4 @@
-import { Placement } from "../../../../Types/layout/Placement";
+import { Placement } from "../../../../types/layout/Placement";
 import { getPageContent_content_pageByPath_grid_placements } from "../__generated__/getPageContent";
 import { mapCoreMediaPlacementItem2ContentElement } from "./mapCoreMediaPlacementItem2ContentElement";
 

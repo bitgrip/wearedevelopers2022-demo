@@ -1,4 +1,4 @@
-import { ContentElement } from "../../../../Types/layout/ContentElement";
+import { ContentElement } from "../../../../types/layout/ContentElement";
 import { getPageContent_content_pageByPath_grid_placements_items } from "../__generated__/getPageContent";
 
 // TODO: here the mapping loginc will become a little more complex

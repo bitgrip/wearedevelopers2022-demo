@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { Navigation } from "../../Types/Navigation/Navigation";
+import { Navigation } from "../../types/Navigation/Navigation";
 
 export interface HeaderSectionProps {
   navigation: Navigation;

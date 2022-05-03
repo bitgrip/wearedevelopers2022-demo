@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import { NavigationItem } from "../../../../Types/Navigation/Navigation";
+import { NavigationItem } from "../../../../types/Navigation/Navigation";
 import {
   getMainMenu_content_site_root_children,
   getMainMenu_content_site_root_navigationPath,

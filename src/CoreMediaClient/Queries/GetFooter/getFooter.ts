@@ -1,6 +1,6 @@
 import values from "lodash/values";
 import toString from "lodash/toString";
-import { Footer } from "../../../Types/elements/Footer";
+import { Footer } from "../../../types/elements/Footer";
 import { ApiClientResponse } from "../../ApiClientResponse";
 import { MockFooter } from "./Mocks/Footer.mock";
 

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Footer } from "../../Types/elements/Footer";
+import { Footer } from "../../types/elements/Footer";
 
 export interface FooterSectionProps {
   footer: Footer;

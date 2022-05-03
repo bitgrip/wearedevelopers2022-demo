@@ -1,4 +1,4 @@
-import { Placement } from "../../../../Types/layout/Placement";
+import { Placement } from "../../../../types/layout/Placement";
 import { MockPlacementStub } from "../Mocks/MainPlacement.mock";
 import { mapCoreMediaPlacement2Placement } from "./mapCoreMediaPlacement2Placement";
 

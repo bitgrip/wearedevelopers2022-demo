@@ -1,4 +1,4 @@
-import { Footer } from "../../../../Types/elements/Footer";
+import { Footer } from "../../../../types/elements/Footer";
 
 export const MockFooter: Footer = {
   copyright:

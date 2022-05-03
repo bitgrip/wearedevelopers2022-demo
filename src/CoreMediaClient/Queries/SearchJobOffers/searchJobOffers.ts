@@ -1,7 +1,7 @@
 import values from "lodash/values";
 import toString from "lodash/toString";
 import { ApiClientResponse } from "../../ApiClientResponse";
-import { JobOffer } from "../../../Types/apiTypes/JobOffer";
+import { JobOffer } from "../../../types/apiTypes/JobOffer";
 
 export interface SearchJobOffersQuery {
   country: string;

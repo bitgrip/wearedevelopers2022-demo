@@ -1,5 +1,5 @@
-import { Page } from "../../../../Types/layout/Page";
-import { Placement } from "../../../../Types/layout/Placement";
+import { Page } from "../../../../types/layout/Page";
+import { Placement } from "../../../../types/layout/Placement";
 import {
   getPageContent_content_pageByPath,
   getPageContent_content_pageByPath_grid,

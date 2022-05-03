@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { FooterSection } from "./FooterSection";
-import { Footer } from "../../Types/elements/Footer";
+import { Footer } from "../../types/elements/Footer";
 
 export default {
   title: "Footer Section",
@@ -20,7 +20,7 @@ const footer: Footer = {
 };
 
 export const Primary: ComponentStory<typeof FooterSection> = () => (
-  <FooterSection footer={footer}>FooterSection</FooterSection>
+  <FooterSection footer={footer} />
 );
 Primary.parameters = {
   chromatic: { viewports: [450, 760, 1000, 1400] },

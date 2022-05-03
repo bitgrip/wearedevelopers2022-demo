@@ -1,4 +1,4 @@
-import { Navigation } from "../../../../Types/Navigation/Navigation";
+import { Navigation } from "../../../../types/Navigation/Navigation";
 import { MockMainMenuAsSite } from "../Mocks/Navigation.mock";
 
 import { mapCoreMediaMainMenuToNavigation } from "./mapCoreMediaMainMenuToNavigation";

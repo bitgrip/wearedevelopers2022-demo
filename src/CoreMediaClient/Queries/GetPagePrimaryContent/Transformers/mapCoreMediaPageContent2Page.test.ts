@@ -1,4 +1,4 @@
-import { Page } from "../../../../Types/layout/Page";
+import { Page } from "../../../../types/layout/Page";
 import { MockPageStub } from "../Mocks/Page.mock";
 import { mapCoreMediaPageContent2Page } from "./mapCoreMediaPageContent2Page";
 

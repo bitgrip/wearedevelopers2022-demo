@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FC } from "react";
 import useSWR from "swr";
-import { Placement } from "../../Types/layout/Placement";
+import { Placement } from "../../types/layout/Placement";
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data.data);
 

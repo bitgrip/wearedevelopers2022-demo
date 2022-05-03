@@ -1,7 +1,7 @@
 import {
   Navigation,
   NavigationItem,
-} from "../../../../Types/Navigation/Navigation";
+} from "../../../../types/Navigation/Navigation";
 import {
   getMainMenu_content,
   getMainMenu_content_site_root,

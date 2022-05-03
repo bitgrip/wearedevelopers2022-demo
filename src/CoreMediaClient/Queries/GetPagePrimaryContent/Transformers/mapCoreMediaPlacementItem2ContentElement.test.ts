@@ -1,4 +1,4 @@
-import { ContentElement } from "../../../../Types/layout/ContentElement";
+import { ContentElement } from "../../../../types/layout/ContentElement";
 import { MockPlacementItemStub } from "../Mocks/MainPlacement.mock";
 import { mapCoreMediaPlacementItem2ContentElement } from "./mapCoreMediaPlacementItem2ContentElement";
 

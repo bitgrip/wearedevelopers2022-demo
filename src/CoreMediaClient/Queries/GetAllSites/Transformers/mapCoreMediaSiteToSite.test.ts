@@ -1,5 +1,5 @@
 import { MockSiteEmeraldEnUs } from "../Mocks/Site.mock";
-import { Site } from "../../../../Types/Site/Site";
+import { Site } from "../../../../types/Site/Site";
 import { mapCoreMediaSiteToSite } from "./mapCoreMediaSiteToSite";
 
 /**

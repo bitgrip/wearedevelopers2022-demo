@@ -2,7 +2,7 @@ import values from "lodash/values";
 import toString from "lodash/toString";
 import { ApiClientResponse } from "../../ApiClientResponse";
 import { coreMediaClient } from "../../ApolloClient";
-import { Navigation } from "../../../Types/Navigation/Navigation";
+import { Navigation } from "../../../types/Navigation/Navigation";
 import { getMainMenuQuery } from "./getMainMenuQuery";
 import { getMainMenu } from "./__generated__/getMainMenu";
 import { mapCoreMediaMainMenuToNavigation } from "./Transformers/mapCoreMediaMainMenuToNavigation";

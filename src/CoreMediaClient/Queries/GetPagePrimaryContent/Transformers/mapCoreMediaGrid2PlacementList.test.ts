@@ -1,4 +1,4 @@
-import { Placement } from "../../../../Types/layout/Placement";
+import { Placement } from "../../../../types/layout/Placement";
 import { MockGridStub } from "../Mocks/MainPlacement.mock";
 import { mapCoreMediaGrid2PlacementList } from "./mapCoreMediaGrid2PlacementList";
 

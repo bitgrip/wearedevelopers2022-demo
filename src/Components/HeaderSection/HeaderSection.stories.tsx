@@ -3,7 +3,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { HeaderSection } from "./HeaderSection";
-import { Navigation } from "../../Types/Navigation/Navigation";
+import { Navigation } from "../../types/Navigation/Navigation";
 
 export default {
   title: "Header Section",
@@ -21,7 +21,7 @@ const navigation: Navigation = {
 };
 
 export const Primary: ComponentStory<typeof HeaderSection> = () => (
-  <HeaderSection navigation={navigation}>HeaderSection</HeaderSection>
+  <HeaderSection navigation={navigation} />
 );
 Primary.parameters = {
   chromatic: { viewports: [450, 760, 1000, 1400] },

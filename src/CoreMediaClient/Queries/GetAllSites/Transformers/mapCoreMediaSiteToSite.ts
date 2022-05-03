@@ -1,4 +1,4 @@
-import { Site } from "../../../../Types/Site/Site";
+import { Site } from "../../../../types/Site/Site";
 import { GetAllSites_content_sites } from "../__generated__/GetAllSites";
 
 /**
