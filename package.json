@@ -12,7 +12,7 @@
     "test:watch": "jest --watch --maxWorkers=25%",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --only-changed --ci --junit-report ./reports/chromatic-junit.xml --project-token=eacacf3086df"
+    "chromatic": "npx chromatic --project-token=$CHROMATIC_TOKEN"
   },
   "dependencies": {
     "@apollo/client": "^3.5.9",
