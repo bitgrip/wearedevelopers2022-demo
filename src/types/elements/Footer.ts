@@ -1,5 +1,5 @@
 import { Navigation } from "../Navigation/Navigation";
 
-export interface Footer extends Navigation {
+export interface IFooter extends Navigation {
   copyright: string;
 }

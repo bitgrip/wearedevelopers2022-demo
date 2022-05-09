@@ -2,31 +2,31 @@ import React, { Suspense } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { join } from "lodash";
-import { Footer } from "../src/types/elements/Footer";
-import { FooterSection } from "../src/Components/FooterSection/FooterSection";
+import { IFooter } from "../src/types/elements/Footer";
+import { Footer } from "../src/Components/Footer/Footer";
 // import dynamic from "next/dynamic";
-import { HeaderSection } from "../src/Components/HeaderSection/HeaderSection";
+import { Header } from "../src/Components/Header/Header";
 import { JobSearch } from "../src/Components/JobSearch/JobSearch";
 import { Navigation } from "../src/types/Navigation/Navigation";
 import { Page } from "../src/types/layout/Page";
 import {
   getNavigation,
   NavigationResponse,
-} from "../src/CoreMediaClient/Queries/GetNavigation/getNavigation";
+} from "../src/StoryblokClient/Queries/GetNavigation/getNavigation";
 import {
   FooterResponse,
   getFooter,
-} from "../src/CoreMediaClient/Queries/GetFooter/getFooter";
+} from "../src/StoryblokClient/Queries/GetFooter/getFooter";
 import {
   getPagePrimaryContent,
   PrimaryContentResponse,
-} from "../src/CoreMediaClient/Queries/GetPagePrimaryContent/getPagePrimaryContent";
+} from "../src/StoryblokClient/Queries/GetPagePrimaryContent/getPagePrimaryContent";
 import RelatedSection from "../src/Components/RelatedSection/RelatedSection";
 
 export interface SSRPageLayoutProps {
   slug: string;
   navigation: Navigation | null;
-  footer: Footer | null;
+  footer: IFooter | null;
   pageContent: Page | null;
 }
 
@@ -90,7 +90,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
         <meta name="description" content={`Hallo`} />
         <link rel="canonical" href={`/fghjk/`} />
       </Head>
-      <HeaderSection navigation={navigation} />
+      <Header />
       <div className="min-h-[calc(100vh_-_15rem)] py-8">
         <main
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16"
@@ -142,7 +142,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           </aside>
         </Suspense>
       </div>
-      <FooterSection footer={footer} />
+      <Footer />
     </div>
   );
 }

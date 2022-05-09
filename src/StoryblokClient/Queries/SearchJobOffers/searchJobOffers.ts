@@ -17,7 +17,7 @@ export const searchJobOffers = async (
 ): Promise<SearchJobOffersResponse> => {
   try {
     console.debug(
-      `Execute CoreMedia.searchJobOffers(${toString(values(query))})`
+      `Execute StoryBlock.searchJobOffers(${toString(values(query))})`
     );
 
     // Mock data
@@ -31,23 +31,9 @@ export const searchJobOffers = async (
       },
     ];
 
-    const mockGFranceSearchJobOffers: JobOffer[] = [
-      {
-        id: "joboffer/653",
-        type: "Great Job in Paris",
-        country: "France",
-        position: "Assistent Manager",
-        data: { content: "Lorem Ipsum" },
-      },
-    ];
-    const mockSearchJobOffers: any = {
-      germany: mockGermanySearchJobOffers,
-      france: mockGFranceSearchJobOffers,
-    };
-
     return {
       status: 200,
-      data: mockSearchJobOffers?.[query.country],
+      data: mockGermanySearchJobOffers,
     };
   } catch (error) {
     console.error((error as Error).message);
