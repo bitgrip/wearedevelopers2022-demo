@@ -12,6 +12,15 @@
 /* ==========================================================================
    Start of custom Webflow CSS
    ========================================================================== */
+* {
+  font-family: PPrg-text, sans-serif;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  white-space: normal;
+}
+
 .w-checkbox {
   display: block;
   margin-bottom: 5px;
