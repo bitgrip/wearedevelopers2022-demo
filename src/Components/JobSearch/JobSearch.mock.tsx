@@ -10,7 +10,35 @@ export const single:IJobSearch = {
 };
 
 export const multi:IJobSearch = {
-  filterList: [{id: 'default', label: 'Skipper', isChecked: false}, {id: 'frontend', label: 'Frontend', isChecked: false}],
+  filterList: [{
+    type: 'default',
+    label: 'Skipper',
+    isChecked: false
+  }, {
+    type: 'frontend',
+    label: 'Frontend',
+    isChecked: false
+  }, {
+    type: 'po',
+    label: 'PO',
+    isChecked: false
+  }, {
+    type: 'backend',
+    label: 'Backend',
+    isChecked: false
+  }, {
+    type: 'operations',
+    label: 'Operations',
+    isChecked: false
+  }, {
+    type: 'qa',
+    label: 'QA',
+    isChecked: false
+  }, {
+    type: 'architecture',
+    label: 'Architecture',
+    isChecked: false
+  }],
   list: [{
     key: 'default',
     link: '/#',
@@ -28,5 +56,29 @@ export const multi:IJobSearch = {
     link: '/#',
     title: 'Frontend-Entwickler (w/m/d)',
     tag: 'Frontend'
+  },
+  {
+    key: 'qa',
+    link: '/#',
+    title: 'Software-Tester (w/m/d)',
+    tag: 'QA'
+  },
+  {
+    key: 'backend',
+    link: '/#',
+    title: 'Backend-Entwickler (w/m/d)',
+    tag: 'Backend'
+  },
+  {
+    key: 'architecture',
+    link: '/#',
+    title: 'Software Architekt (w/m/d)',
+    tag: 'Architecture'
+  },
+  {
+    key: 'operations',
+    link: '/#',
+    title: 'Operations Engineer (w/m/d)',
+    tag: 'Operations'
   }]
 };

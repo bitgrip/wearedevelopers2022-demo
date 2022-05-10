@@ -9,7 +9,7 @@ export const List: FC<IList> = ({ list }) => {
           <li role="listitem" className="link-list__item w-dyn-item" key={index}>
             <a href={item.link} className="link-list__link w-inline-block">
               <div className="link-list__category">
-                <div className="tags">{item.tag}</div>
+                <div className={`tags tags--${item.key}`}>{item.tag}</div>
               </div>
               <div className="link-list__title">{item.title}</div>
               <div className="link-list__description">[m/w/x]</div>

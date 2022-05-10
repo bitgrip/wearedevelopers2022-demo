@@ -1,21 +1,23 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { List } from '../List/List';
-import { IJobSearch } from "../../types/elements/JobSearch";
+import { IJobSearch, IFilter } from "../../types/elements/JobSearch";
 
 export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
   const [visibleJobList, setVisibleJobList] = useState(list);
-  const [tagList, setTagList] = useState();
 
-   const [filter, updateFilter] = useState<{ id: string; label: string; isChecked?: boolean }[]>([
-    { id: 'all', label: 'all', isChecked: true },
-  ]);
+  const [filter, updateFilter] = useState<IFilter[]>( filterList ?
+    [ 
+      { type: 'all', label: 'all', isChecked: true },
+      ...filterList
+    ] : []
+  );
   const [filterId, updateFilterId] = useState<string>('all');
 
-  const handleFilterClick = (id: string) => {
+  const handleFilterClick = (type: string) => {
     updateFilter(state =>
       state.map(f => {
-        if (f.label === id) {
+        if (f.label === type) {
           return {
             ...f,
             isChecked: true,
@@ -28,27 +30,24 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
         }
       })
     );
-    updateFilterId(id);
+    updateFilterId(type);
 
-    if (id == 'all') {
+    if (type == 'all') {
       setVisibleJobList(list);
     } else {
-      setVisibleJobList(list.filter(job => job.key == id))
+      setVisibleJobList(list.filter(job => job.key == type))
     }
   };
 
   return (
     <div>
-      {filterList && filterList.length > 0 && (
+      {filter && filter.length > 0 && (
         <div className="grid">
           <div className="filterbar">
-            <button className="btn" type="button" onClick={() => handleFilterClick('all')}>
-              alle
-            </button>
-            {filterList.map((filterItem, filterIndex) => (
+            {filter.map((filterItem, filterIndex) => (
               <button
-                className="btn"
-                onClick={() => handleFilterClick(filterItem.id)}
+                className={`tags filter-btn--${filterItem.type} ${filterItem.isChecked ? 'filter-btn--active' : ''}`}
+                onClick={() => handleFilterClick(filterItem.type)}
                 key={filterIndex}
               >
                 {filterItem.label}
