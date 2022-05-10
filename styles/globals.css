@@ -832,6 +832,23 @@ label {
   flex-basis: 40%;
 }
 
+.filterbar {
+  display: flex;
+  -ms-grid-column-span: -4;
+  grid-column-end: -2;
+  -ms-grid-column: 2;
+  grid-column-start: 2;
+  -ms-grid-row-span: 1;
+  grid-row-end: 2;
+  -ms-grid-row: 1;
+  grid-row-start: 1;
+  margin-bottom: 40px;
+}
+
+.filterbar > * {
+  margin-right: 20px;
+}
+
 .tags {
   display: inline-block;
   padding: 10px 20px;
