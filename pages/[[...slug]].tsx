@@ -2,32 +2,18 @@ import React, { Suspense } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { join } from "lodash";
-import { IFooter } from "../src/types/elements/Footer";
-import { Footer } from "../src/Components/Footer/Footer";
-// import dynamic from "next/dynamic";
 import { Header } from "../src/Components/Header/Header";
-import { JobSearch } from "../src/Components/JobSearch/JobSearch";
 import { Navigation } from "../src/types/Navigation/Navigation";
 import { Page } from "../src/types/layout/Page";
+import RelatedSection from "../src/Components/RelatedSection/RelatedSection";
 import {
   getNavigation,
   NavigationResponse,
 } from "../src/StoryblokClient/Queries/GetNavigation/getNavigation";
-import {
-  FooterResponse,
-  getFooter,
-} from "../src/StoryblokClient/Queries/GetFooter/getFooter";
-import {
-  getPagePrimaryContent,
-  PrimaryContentResponse,
-} from "../src/StoryblokClient/Queries/GetPagePrimaryContent/getPagePrimaryContent";
-import RelatedSection from "../src/Components/RelatedSection/RelatedSection";
 
 export interface SSRPageLayoutProps {
   slug: string;
   navigation: Navigation | null;
-  footer: IFooter | null;
-  pageContent: Page | null;
 }
 
 export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
@@ -37,15 +23,9 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
   console.debug("getStaticProps for " + slug);
 
   let navigation: NavigationResponse | undefined = undefined;
-  let footer: FooterResponse | undefined = undefined;
-  let pageContent: PrimaryContentResponse | undefined = undefined;
 
   try {
-    [navigation, footer, pageContent] = await Promise.all([
-      getNavigation({ site: "de-de" }),
-      getFooter({ site: "de-de" }),
-      getPagePrimaryContent({ pagePath: slug }),
-    ]);
+    [navigation] = await Promise.all([getNavigation()]);
   } catch (error) {
     console.error("Could not fetch data.");
   }
@@ -54,8 +34,8 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
     props: {
       slug: slug,
       navigation: navigation?.data || null,
-      footer: footer?.data || null,
-      pageContent: pageContent?.data || null,
+      // footer: footer?.data || null,
+      // pageContent: pageContent?.data || null,
     },
     revalidate: 3600,
   };
@@ -65,15 +45,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: [], fallback: true };
 };
 
-// const RelatedSection = dynamic(
-//   () => import("../src/Components/RelatedSection/RelatedSection"),
-//   { suspense: true }
-// );
-
 export default function PageLayout(props: SSRPageLayoutProps) {
-  const { slug, navigation, footer, pageContent } = props;
+  const { slug, navigation } = props;
 
-  if (!navigation || !footer || !pageContent) {
+  if (!navigation) {
     return (
       <div className="absolute top-0 grid grid-cols-1 h-full min-h-full w-full min-w-full place-content-center content-center text-center bg-gray-50">
         <div className="h-36 w-36 m-auto rounded-full bg-gray-200 animate-pulse">
@@ -95,45 +70,11 @@ export default function PageLayout(props: SSRPageLayoutProps) {
         <main
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16"
           key="pageSection"
-        >
-          {pageContent.stage && (
-            <div className="border border-gray-300 p-4">
-              STAGE
-              {pageContent.stage.map((placement) => {
-                return (
-                  <div key={placement.name}>
-                    <h2 className="text-xl mb-l">
-                      Placement: {placement.name}
-                    </h2>
-                    <pre className="mb-8 text-xs">
-                      {JSON.stringify(placement.items, null, 2)}
-                    </pre>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {pageContent.content && (
-            <div className="border border-gray-300 p-4">
-              CONTENT
-              {pageContent.content.map((placement) => {
-                return (
-                  <div key={placement.name}>
-                    <h2 className="text-xl mb-l">
-                      Placement: {placement.name}
-                    </h2>
-                    <pre className="mb-8 text-xs">
-                      {JSON.stringify(placement.items, null, 2)}
-                    </pre>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </main>
+        ></main>
+        <pre>{JSON.stringify(navigation, null, 2)}</pre>
         {slug === "karriere" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-            <JobSearch />
+            {/* <JobSearch /> */}
           </div>
         )}
         <Suspense fallback={<div>Loading...</div>}>
@@ -142,7 +83,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           </aside>
         </Suspense>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

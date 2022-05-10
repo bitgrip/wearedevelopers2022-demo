@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: getMainMenu
+// GraphQL query operation: getHomeMenuItem
 // ====================================================
 
-export interface getMainMenu_PageItems_items {
+export interface getHomeMenuItem_PageItem {
   __typename: "PageItem";
   uuid: string | null;
   full_slug: string | null;
@@ -16,11 +16,6 @@ export interface getMainMenu_PageItems_items {
   parent_id: number | null;
 }
 
-export interface getMainMenu_PageItems {
-  __typename: "PageItems";
-  items: (getMainMenu_PageItems_items | null)[] | null;
-}
-
-export interface getMainMenu {
-  PageItems: getMainMenu_PageItems | null;
+export interface getHomeMenuItem {
+  PageItem: getHomeMenuItem_PageItem | null;
 }
