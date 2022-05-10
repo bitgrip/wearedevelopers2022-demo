@@ -1,60 +1,29 @@
-import { getMainMenu_content } from "../__generated__/getMainMenu";
+import {
+  getMainMenu,
+  getMainMenu_PageItems_items,
+} from "../__generated__/getMainMenu";
 
-export const MockMainMenuAsSite: getMainMenu_content = {
-  __typename: "ContentRoot",
-  site: {
-    __typename: "Site",
-    root: {
-      __typename: "CMChannelImpl",
-      navigationPath: [
-        {
-          __typename: "CMChannelImpl",
-          title: "Bitgrip Career Home",
-          segment: "home",
-          link: {
-            __typename: "Link",
-            id: "10001",
-          },
-        },
-      ],
-      children: [
-        {
-          __typename: "CMChannelImpl",
-          title: "Bitgrip as Employer",
-          segment: "bitgrip-as-employer",
-          link: {
-            __typename: "Link",
-            id: "10110",
-          },
-        },
-        {
-          __typename: "CMChannelImpl",
-          title: "Jobs",
-          segment: "",
-          link: {
-            __typename: "Link",
-            id: "10120",
-          },
-        },
-        {
-          __typename: "CMChannelImpl",
-          title: "Pupils",
-          segment: "pupils",
-          link: {
-            __typename: "Link",
-            id: "10130",
-          },
-        },
-        {
-          __typename: "CMChannelImpl",
-          title: "Students",
-          segment: "students",
-          link: {
-            __typename: "Link",
-            id: "10140",
-          },
-        },
-      ],
-    },
+export const mockJobOffersPage: getMainMenu_PageItems_items = {
+  __typename: "PageItem",
+  uuid: "b9ce7e90-ed21-4547-98f3-70c01c1dfbcb",
+  full_slug: "jobs/",
+  name: "Job Offers",
+  position: -10,
+  parent_id: 132642905,
+};
+
+export const mockReferencesPage: getMainMenu_PageItems_items = {
+  __typename: "PageItem",
+  uuid: "becee759-8f74-4e90-ad3d-4676aef3b75d",
+  full_slug: "references/",
+  name: "References",
+  position: 0,
+  parent_id: 132651862,
+};
+
+export const mockMainMenu: getMainMenu = {
+  PageItems: {
+    __typename: "PageItems",
+    items: [mockJobOffersPage, mockReferencesPage],
   },
 };

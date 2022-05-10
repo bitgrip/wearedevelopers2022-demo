@@ -7,16 +7,20 @@
 // GraphQL query operation: getMainMenu
 // ====================================================
 
-export interface getMainMenu_Space {
-  __typename: "Space";
-  id: number;
-  domain: string;
+export interface getMainMenu_PageItems_items {
+  __typename: "PageItem";
+  uuid: string | null;
+  full_slug: string | null;
+  name: string | null;
+  position: number | null;
+  parent_id: number | null;
+}
+
+export interface getMainMenu_PageItems {
+  __typename: "PageItems";
+  items: (getMainMenu_PageItems_items | null)[] | null;
 }
 
 export interface getMainMenu {
-  Space: getMainMenu_Space | null;
-}
-
-export interface getMainMenuVariables {
-  siteSegment: string;
+  PageItems: getMainMenu_PageItems | null;
 }
