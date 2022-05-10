@@ -1,7 +1,17 @@
+import { getHomeMenuItem_PageItem } from "../__generated__/getHomeMenuItem";
 import {
   getMainMenu,
   getMainMenu_PageItems_items,
 } from "../__generated__/getMainMenu";
+
+export const mockHomePage: getHomeMenuItem_PageItem = {
+  __typename: "PageItem",
+  uuid: "f0548537-e8d3-4815-a6db-3d70745cc717",
+  full_slug: "home",
+  name: "Home",
+  position: -10,
+  parent_id: 132642905,
+};
 
 export const mockJobOffersPage: getMainMenu_PageItems_items = {
   __typename: "PageItem",

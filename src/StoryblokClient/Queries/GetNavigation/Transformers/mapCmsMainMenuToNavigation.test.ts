@@ -6,12 +6,10 @@ import { mapCmsMainMenuToNavigation } from "./mapCmsMainMenuToNavigation";
  */
 describe("should transform a cms menu into an app navigation type", () => {
   test("transform root item", () => {
-    const mainMenu = mapCmsMainMenuToNavigation(mockMainMenu);
-
-    const menuItemOne = mainMenu.children[0];
-    const menuItemTwo = mainMenu.children[1];
-
-    expect(mainMenu.children).toHaveLength(2);
+    const mainMenuItems = mapCmsMainMenuToNavigation(mockMainMenu);
+    const menuItemOne = mainMenuItems[0];
+    const menuItemTwo = mainMenuItems[1];
+    expect(mainMenuItems).toHaveLength(2);
     expect(menuItemOne).toHaveProperty("slug", "jobs/");
     expect(menuItemTwo).toHaveProperty("slug", "references/");
   });

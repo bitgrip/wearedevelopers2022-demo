@@ -2,9 +2,7 @@ import React, { Suspense } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { join } from "lodash";
-// import dynamic from "next/dynamic";
-import { HeaderSection } from "../src/Components/HeaderSection/HeaderSection";
-import { JobSearch } from "../src/Components/JobSearch/JobSearch";
+import { Header } from "../src/Components/Header/Header";
 import { Navigation } from "../src/types/Navigation/Navigation";
 import { Page } from "../src/types/layout/Page";
 import RelatedSection from "../src/Components/RelatedSection/RelatedSection";
@@ -47,11 +45,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: [], fallback: true };
 };
 
-// const RelatedSection = dynamic(
-//   () => import("../src/Components/RelatedSection/RelatedSection"),
-//   { suspense: true }
-// );
-
 export default function PageLayout(props: SSRPageLayoutProps) {
   const { slug, navigation } = props;
 
@@ -72,15 +65,16 @@ export default function PageLayout(props: SSRPageLayoutProps) {
         <meta name="description" content={`Hallo`} />
         <link rel="canonical" href={`/fghjk/`} />
       </Head>
-      <HeaderSection navigation={navigation} />
+      <Header />
       <div className="min-h-[calc(100vh_-_15rem)] py-8">
         <main
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16"
           key="pageSection"
         ></main>
+        <pre>{JSON.stringify(navigation, null, 2)}</pre>
         {slug === "karriere" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-            <JobSearch />
+            {/* <JobSearch /> */}
           </div>
         )}
         <Suspense fallback={<div>Loading...</div>}>
@@ -89,6 +83,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           </aside>
         </Suspense>
       </div>
+      {/* <Footer /> */}
     </div>
   );
 }

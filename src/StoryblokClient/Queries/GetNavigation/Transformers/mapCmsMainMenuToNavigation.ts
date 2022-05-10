@@ -1,7 +1,4 @@
-import {
-  Navigation,
-  NavigationItem,
-} from "../../../../types/Navigation/Navigation";
+import { NavigationItem } from "../../../../types/Navigation/Navigation";
 import {
   getMainMenu,
   getMainMenu_PageItems_items,
@@ -15,7 +12,7 @@ import { mapCmsMainMenuItemToNavigationItem } from "./mapCmsMainMenuItemToNaviga
  */
 export const mapCmsMainMenuToNavigation = (
   responseData: getMainMenu
-): Navigation => {
+): NavigationItem[] => {
   if (!responseData?.PageItems) {
     throw new Error(
       "[mapCmsMainMenuToNavigation] Type mapping error: given main menu data does not contain any valid data."
@@ -30,12 +27,5 @@ export const mapCmsMainMenuToNavigation = (
       );
     }) || [];
 
-  const mainMenu: Navigation = {
-    id: "",
-    name: "",
-    slug: "",
-    children: children,
-  };
-
-  return mainMenu;
+  return children;
 };

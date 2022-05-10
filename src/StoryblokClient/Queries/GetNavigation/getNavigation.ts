@@ -1,11 +1,21 @@
 import values from "lodash/values";
 import toString from "lodash/toString";
 import { ApiClientResponse } from "../../ApiClientResponse";
-import { Navigation } from "../../../types/Navigation/Navigation";
+import {
+  Navigation,
+  NavigationItem,
+} from "../../../types/Navigation/Navigation";
 import { getMainMenuQuery } from "./getMainMenuQuery";
 import { getMainMenu } from "./__generated__/getMainMenu";
 import { mapCmsMainMenuToNavigation } from "./Transformers/mapCmsMainMenuToNavigation";
 import { cmsClient } from "../../ApolloClient";
+import { getHomeMenuItemQuery } from "./getHomeMenuItemQuery";
+import {
+  getHomeMenuItem,
+  getHomeMenuItem_PageItem,
+} from "./__generated__/getHomeMenuItem";
+import { mapCmsMainMenuItemToNavigationItem } from "./Transformers/mapCmsMainMenuItemToNavigationItem";
+import { mapCmsHomeItemoNavigationItem } from "./Transformers/mapCmsHomeItemoNavigationItem";
 
 export interface NavigationQuery {
   site: string;
@@ -21,7 +31,23 @@ export const getNavigation = async (
   try {
     console.debug(`Execute cms.getNavigation(${toString(values(query))})`);
 
-    const nav: Navigation = await cmsClient
+    const homeItem: NavigationItem = await cmsClient
+      .query({
+        query: getHomeMenuItemQuery,
+      })
+      .then((response) => {
+        const responseData: getHomeMenuItem = response.data as getHomeMenuItem;
+        if (!responseData || !responseData)
+          throw new Error(
+            "Received no data for the homepage item in getNavigation."
+          );
+        const resnav: NavigationItem = mapCmsHomeItemoNavigationItem(
+          responseData.PageItem as getHomeMenuItem_PageItem
+        );
+        return resnav;
+      });
+
+    const navItems: NavigationItem[] = await cmsClient
       .query({
         query: getMainMenuQuery,
         variables: { siteSegment: process.env.NEXT_PUBLIC_SITE },
@@ -30,9 +56,15 @@ export const getNavigation = async (
         const responseData: getMainMenu = response.data as getMainMenu;
         if (!responseData || !responseData)
           throw new Error("Received no data in getNavigation.");
-        const resnav: Navigation = mapCmsMainMenuToNavigation(responseData);
+        const resnav: NavigationItem[] =
+          mapCmsMainMenuToNavigation(responseData);
         return resnav;
       });
+
+    const nav: Navigation = {
+      ...homeItem,
+      children: navItems,
+    };
 
     return {
       status: 200,
