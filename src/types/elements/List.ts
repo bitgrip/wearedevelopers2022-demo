@@ -1,4 +1,4 @@
-interface IListElement {
+export interface IListElement {
   key: string;
   link: string;
   tag: string;

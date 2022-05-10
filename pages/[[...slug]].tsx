@@ -10,6 +10,11 @@ import {
   getNavigation,
   NavigationResponse,
 } from "../src/StoryblokClient/Queries/GetNavigation/getNavigation";
+import { JobSearch } from "../src/Components/JobSearch/JobSearch";
+import {
+  filterList,
+  jobList,
+} from "../src/Components/JobSearch/JobSearch.mock";
 
 export interface SSRPageLayoutProps {
   slug: string;
@@ -72,9 +77,9 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           key="pageSection"
         ></main>
         <pre>{JSON.stringify(navigation, null, 2)}</pre>
-        {slug === "karriere" && (
+        {slug === "jobs" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-            {/* <JobSearch /> */}
+            <JobSearch list={jobList} filterList={filterList} />
           </div>
         )}
         <Suspense fallback={<div>Loading...</div>}>
