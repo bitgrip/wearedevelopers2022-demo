@@ -11,7 +11,7 @@ export const mapCmsHomeItemoNavigationItem = (
 ): NavigationItem => {
   if (!navigationItem?.uuid || !navigationItem?.full_slug) {
     throw new Error(
-      "Type mapping error: given cms navigationPath record does not contain any valid data."
+      "Type mapping error: given cms home navigation item record does not contain any valid data."
     );
   }
 

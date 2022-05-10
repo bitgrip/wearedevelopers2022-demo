@@ -15,10 +15,17 @@ import {
   filterList,
   jobList,
 } from "../src/Components/JobSearch/JobSearch.mock";
+import {
+  getPageContent,
+  PageContentResponse,
+} from "../src/StoryblokClient/Queries/GetPageContent/getPageContent";
+import { ContentElementComponentMapper } from "../src/Components/ContentElementComponentMapper";
+import { IContentElement } from "../src/types/layout/ContentElement";
 
 export interface SSRPageLayoutProps {
   slug: string;
   navigation: Navigation | null;
+  pageContent: Page | null;
 }
 
 export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
@@ -28,9 +35,13 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
   console.debug("getStaticProps for " + slug);
 
   let navigation: NavigationResponse | undefined = undefined;
+  let pageContent: PageContentResponse | undefined = undefined;
 
   try {
-    [navigation] = await Promise.all([getNavigation()]);
+    [navigation, pageContent] = await Promise.all([
+      getNavigation(),
+      getPageContent({ slug }),
+    ]);
   } catch (error) {
     console.error("Could not fetch data.");
   }
@@ -39,8 +50,7 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
     props: {
       slug: slug,
       navigation: navigation?.data || null,
-      // footer: footer?.data || null,
-      // pageContent: pageContent?.data || null,
+      pageContent: pageContent?.data || null,
     },
     revalidate: 3600,
   };
@@ -51,7 +61,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default function PageLayout(props: SSRPageLayoutProps) {
-  const { slug, navigation } = props;
+  const { slug, navigation, pageContent } = props;
 
   if (!navigation) {
     return (
@@ -77,6 +87,14 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           key="pageSection"
         ></main>
         {/* <pre>{JSON.stringify(navigation, null, 2)}</pre> */}
+        {pageContent?.title && <h1>{pageContent.title}</h1>}
+        {/* <pre>{JSON.stringify(pageContent, null, 2)}</pre> */}
+
+        {pageContent?.content &&
+          pageContent?.content.map((item) => {
+            return ContentElementComponentMapper(item);
+          })}
+
         {slug === "jobs" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <JobSearch list={jobList} filterList={filterList} />
