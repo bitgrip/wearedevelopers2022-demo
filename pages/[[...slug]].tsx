@@ -76,7 +76,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16"
           key="pageSection"
         ></main>
-        <pre>{JSON.stringify(navigation, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(navigation, null, 2)}</pre> */}
         {slug === "jobs" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <JobSearch list={jobList} filterList={filterList} />
