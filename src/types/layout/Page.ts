@@ -1,10 +1,8 @@
-import { Placement } from "./Placement";
+import { IContentElement } from "./ContentElement";
 
 export interface Page {
   id: string;
   slug: string;
   title: string;
-  stage?: Placement[];
-  content?: Placement[];
-  engagement?: Placement[];
+  content?: IContentElement[];
 }

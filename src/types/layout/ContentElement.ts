@@ -1,5 +1,4 @@
-export interface ContentElement {
+export interface IContentElement {
   id: string;
   type: string;
-  data: any;
 }

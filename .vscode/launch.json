@@ -1,0 +1,17 @@
+{
+  "version": "0.0.2",
+  "configurations": [
+    {
+      "command": "nvm use 16.14.0",
+      "request": "launch",
+      "name": "Launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "nvm use 16.14.0",
+      "request": "launch",
+      "name": "Launch",
+      "type": "node"
+    }
+  ]
+}

@@ -2,32 +2,23 @@ import React, { Suspense } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { join } from "lodash";
-import { Footer } from "../src/types/elements/Footer";
-import { FooterSection } from "../src/Components/FooterSection/FooterSection";
-// import dynamic from "next/dynamic";
-import { HeaderSection } from "../src/Components/HeaderSection/HeaderSection";
-import { JobSearch } from "../src/Components/JobSearch/JobSearch";
+import { Header } from "../src/Components/Header/Header";
 import { Navigation } from "../src/types/Navigation/Navigation";
 import { Page } from "../src/types/layout/Page";
+import RelatedSection from "../src/Components/RelatedSection/RelatedSection";
 import {
   getNavigation,
   NavigationResponse,
-} from "../src/CoreMediaClient/Queries/GetNavigation/getNavigation";
+} from "../src/StoryblokClient/Queries/GetNavigation/getNavigation";
+import { JobSearch } from "../src/Components/JobSearch/JobSearch";
 import {
-  FooterResponse,
-  getFooter,
-} from "../src/CoreMediaClient/Queries/GetFooter/getFooter";
-import {
-  getPagePrimaryContent,
-  PrimaryContentResponse,
-} from "../src/CoreMediaClient/Queries/GetPagePrimaryContent/getPagePrimaryContent";
-import RelatedSection from "../src/Components/RelatedSection/RelatedSection";
+  filterList,
+  jobList,
+} from "../src/Components/JobSearch/JobSearch.mock";
 
 export interface SSRPageLayoutProps {
   slug: string;
   navigation: Navigation | null;
-  footer: Footer | null;
-  pageContent: Page | null;
 }
 
 export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
@@ -37,15 +28,9 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
   console.debug("getStaticProps for " + slug);
 
   let navigation: NavigationResponse | undefined = undefined;
-  let footer: FooterResponse | undefined = undefined;
-  let pageContent: PrimaryContentResponse | undefined = undefined;
 
   try {
-    [navigation, footer, pageContent] = await Promise.all([
-      getNavigation({ site: "de-de" }),
-      getFooter({ site: "de-de" }),
-      getPagePrimaryContent({ pagePath: slug }),
-    ]);
+    [navigation] = await Promise.all([getNavigation()]);
   } catch (error) {
     console.error("Could not fetch data.");
   }
@@ -54,8 +39,8 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
     props: {
       slug: slug,
       navigation: navigation?.data || null,
-      footer: footer?.data || null,
-      pageContent: pageContent?.data || null,
+      // footer: footer?.data || null,
+      // pageContent: pageContent?.data || null,
     },
     revalidate: 3600,
   };
@@ -65,15 +50,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: [], fallback: true };
 };
 
-// const RelatedSection = dynamic(
-//   () => import("../src/Components/RelatedSection/RelatedSection"),
-//   { suspense: true }
-// );
-
 export default function PageLayout(props: SSRPageLayoutProps) {
-  const { slug, navigation, footer, pageContent } = props;
+  const { slug, navigation } = props;
 
-  if (!navigation || !footer || !pageContent) {
+  if (!navigation) {
     return (
       <div className="absolute top-0 grid grid-cols-1 h-full min-h-full w-full min-w-full place-content-center content-center text-center bg-gray-50">
         <div className="h-36 w-36 m-auto rounded-full bg-gray-200 animate-pulse">
@@ -90,50 +70,16 @@ export default function PageLayout(props: SSRPageLayoutProps) {
         <meta name="description" content={`Hallo`} />
         <link rel="canonical" href={`/fghjk/`} />
       </Head>
-      <HeaderSection navigation={navigation} />
+      <Header />
       <div className="min-h-[calc(100vh_-_15rem)] py-8">
         <main
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16"
           key="pageSection"
-        >
-          {pageContent.stage && (
-            <div className="border border-gray-300 p-4">
-              STAGE
-              {pageContent.stage.map((placement) => {
-                return (
-                  <div key={placement.name}>
-                    <h2 className="text-xl mb-l">
-                      Placement: {placement.name}
-                    </h2>
-                    <pre className="mb-8 text-xs">
-                      {JSON.stringify(placement.items, null, 2)}
-                    </pre>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {pageContent.content && (
-            <div className="border border-gray-300 p-4">
-              CONTENT
-              {pageContent.content.map((placement) => {
-                return (
-                  <div key={placement.name}>
-                    <h2 className="text-xl mb-l">
-                      Placement: {placement.name}
-                    </h2>
-                    <pre className="mb-8 text-xs">
-                      {JSON.stringify(placement.items, null, 2)}
-                    </pre>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </main>
-        {slug === "karriere" && (
+        ></main>
+        {/* <pre>{JSON.stringify(navigation, null, 2)}</pre> */}
+        {slug === "jobs" && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-            <JobSearch />
+            <JobSearch list={jobList} filterList={filterList} />
           </div>
         )}
         <Suspense fallback={<div>Loading...</div>}>
@@ -142,7 +88,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           </aside>
         </Suspense>
       </div>
-      <FooterSection footer={footer} />
+      {/* <Footer /> */}
     </div>
   );
 }

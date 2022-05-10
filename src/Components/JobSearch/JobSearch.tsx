@@ -1,47 +1,62 @@
-import axios from "axios";
-import { useRouter } from "next/router";
-import React, { FC } from "react";
-import useSWR from "swr";
+import { FC, useState, useEffect } from "react";
+import { List } from '../List/List';
+import { IJobSearch, IFilter } from "../../types/elements/JobSearch";
 
-const fetcher = (url: string) => axios.get(url).then((res) => res.data.data);
+export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
-export interface JobSearchProps {}
+  const [visibleJobList, setVisibleJobList] = useState(list);
 
-export const JobSearch: FC<JobSearchProps> = () => {
-  const [searchTerm, setSearchTerm] = React.useState(undefined);
-  const router = useRouter();
+  const [filter, updateFilter] = useState<IFilter[]>( filterList ?
+    [ 
+      { type: 'all', label: 'all', isChecked: true },
+      ...filterList
+    ] : []
+  );
+  const [filterId, updateFilterId] = useState<string>('all');
 
-  const handleChange = (event: any) => {
-    router.push({
-      pathname: router?.query?.slug?.[0],
-      query: { country: event.target.value || undefined },
-    });
-    setSearchTerm(event.target.value);
+  const handleFilterClick = (type: string) => {
+    updateFilter(state =>
+      state.map(f => {
+        if (f.label === type) {
+          return {
+            ...f,
+            isChecked: true,
+          };
+        } else {
+          return {
+            ...f,
+            isChecked: false,
+          };
+        }
+      })
+    );
+    updateFilterId(type);
+
+    if (type == 'all') {
+      setVisibleJobList(list);
+    } else {
+      setVisibleJobList(list.filter(job => job.key == type))
+    }
   };
-
-  const params = new URLSearchParams();
-  params.append("country", searchTerm || "*");
-  params.append("positon", "*");
-  const apiPath: string = "/api/jobs?" + params.toString();
-
-  const { data, error } = useSWR(apiPath, fetcher);
-
-  if (error) return <div>Failed to load</div>;
-  // if (!data) return <div>Loading...</div>;
 
   return (
     <div>
-      <div>
-        <select id="country" onChange={handleChange}>
-          <option value={"germany"}>Germany</option>
-          <option value={"france"}>France</option>
-        </select>
-      </div>
-      <hr />
-      <p>Jobs found for {searchTerm}:</p>
-      {data ? <p>{JSON.stringify(data)}</p> : <p>No Data</p>}
-    </div>
+      {filter && filter.length > 0 && (
+        <div className="grid">
+          <div className="filterbar">
+            {filter.map((filterItem, filterIndex) => (
+              <button
+                className={`tags filter-btn--${filterItem.type} ${filterItem.isChecked ? 'filter-btn--active' : ''}`}
+                onClick={() => handleFilterClick(filterItem.type)}
+                key={filterIndex}
+              >
+                {filterItem.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+      <List list={visibleJobList} />
+    </div >
   );
 };
-
-export default JobSearch;
