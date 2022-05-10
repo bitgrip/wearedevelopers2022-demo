@@ -14,7 +14,6 @@ import {
   getHomeMenuItem,
   getHomeMenuItem_PageItem,
 } from "./__generated__/getHomeMenuItem";
-import { mapCmsMainMenuItemToNavigationItem } from "./Transformers/mapCmsMainMenuItemToNavigationItem";
 import { mapCmsHomeItemoNavigationItem } from "./Transformers/mapCmsHomeItemoNavigationItem";
 
 export interface NavigationQuery {
