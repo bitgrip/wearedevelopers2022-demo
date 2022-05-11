@@ -1,3 +1,5 @@
+import { IContentElement } from "../layout/ContentElement";
+
 export interface IListElement {
   key: string;
   link: string;
@@ -5,6 +7,6 @@ export interface IListElement {
   title: string;
 }
 
-export interface IList {
+export interface IList extends IContentElement {
   list: IListElement[];
 }

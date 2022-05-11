@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import {
   searchJobOffers,
   SearchJobOffersResponse,
-} from "../../src/CoreMediaClient/Queries/SearchJobOffers/searchJobOffers";
+} from "../../src/StoryblokClient/Queries/SearchJobOffers/searchJobOffers";
 
 /**
  * @swagger

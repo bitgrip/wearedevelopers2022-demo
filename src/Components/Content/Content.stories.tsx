@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Content>;
 
 export const Primary: ComponentStory<typeof Content> = () => (
-  <Content content={ ContentMock } />
+  <Content element={ ContentMock } />
 );
 Primary.parameters = {
   chromatic: { viewports: [450, 760, 1000, 1400] },

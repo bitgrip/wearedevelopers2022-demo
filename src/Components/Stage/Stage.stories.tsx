@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Stage>;
 
 export const Primary: ComponentStory<typeof Stage> = () => (
-  <Stage stage={StageMock} />
+  <Stage element={StageMock} />
 );
 Primary.parameters = {
   chromatic: { viewports: [450, 760, 1000, 1400] },

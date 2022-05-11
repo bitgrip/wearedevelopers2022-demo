@@ -3,7 +3,6 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { join } from "lodash";
 import { Header } from "../src/Components/Header/Header";
-import { Navigation } from "../src/types/Navigation/Navigation";
 import { Footer } from "../src/Components/Footer/Footer";
 import { Container } from "../src/Components/Container/Container";
 import { Row } from "../src/Components/Row/Row";
@@ -19,6 +18,8 @@ import {
 } from "../src/StoryblokClient/Queries/GetPageContent/getPageContent";
 import { ContentElementComponentMapper } from "../src/Components/ContentElementComponentMapper";
 import { IContentElement } from "../src/types/layout/ContentElement";
+import { StageMock } from "../src/Components/Stage/Stage.mock";
+import { ContentMock } from "../src/Components/Content/Content.mock";
 
 export interface SSRPageLayoutProps {
   slug: string;
@@ -69,6 +70,8 @@ export default function PageLayout(props: SSRPageLayoutProps) {
   }
   */
 
+  console.log(pageContent);
+
   return (
     <div className="bg-white">
       <Head>
@@ -79,6 +82,16 @@ export default function PageLayout(props: SSRPageLayoutProps) {
       <body className="body--general">
         <Header />
         <div className="content-wrapper">
+          <Container>
+            <Row>
+              <ContentElementComponentMapper {...StageMock} />
+            </Row>
+          </Container>
+          <Container>
+            <Row>
+              <ContentElementComponentMapper {...ContentMock} />
+            </Row>
+          </Container>
           <Container>
             <Row>
               {slug === "jobs" && (

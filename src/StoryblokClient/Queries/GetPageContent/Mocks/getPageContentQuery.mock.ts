@@ -17,13 +17,6 @@ export const getPageContentQueryResponseDataMock: any = {
               '<!--#storyblok#{"name": "Stage", "space": "156808", "uid": "09b4cfbd-0883-4f37-877e-209c649ad99d", "id": "132647680"}-->',
           },
           {
-            _uid: "d53c2cb7-6e72-4497-bcb3-3bbe6a0dc88d",
-            headline: "Test Teaser Jobs Oberview",
-            component: "teaser",
-            _editable:
-              '<!--#storyblok#{"name": "teaser", "space": "156808", "uid": "d53c2cb7-6e72-4497-bcb3-3bbe6a0dc88d", "id": "132647680"}-->',
-          },
-          {
             _uid: "2ececbb7-a87c-41f6-8355-0a332f4b610d",
             Content:
               "Wir sind ein senioriges Team. Wir haben schon viele Projekte und Arbeitgeber gesehen und erlebt. Und genau deshalb wissen wir, was uns wichtig ist: richtig gute Projekte abzuliefern, Freiraum für neue Ideen und Technologie zu haben und das alles ohne dabei zu verbrennen.\n\nUnsere offenen Jobs:",
