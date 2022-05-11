@@ -5,7 +5,7 @@ import { List } from "./List";
 import { single, multi } from './List.mock';
 
 export default {
-  title: "List",
+  title: "Atom/List",
   component: List,
 } as ComponentMeta<typeof List>;
 

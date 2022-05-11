@@ -1,5 +1,5 @@
 import { FC } from "react";
-
+import { Interweave } from 'interweave';
 import { IStage } from "../../types/elements/Stage";
 
 export interface StageProps {
@@ -12,18 +12,23 @@ export const Stage: FC<StageProps> = ({ element }) => {
         id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e104-8556e103"
         className="stage__content"
       >
-        <h1
-          id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e105-8556e103"
-          className="stage__heading"
-        >
-          {element?.headline || "Headline"}
-        </h1>
-        <p
-          id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e107-8556e103"
-          className="stage__text spacing--top-60"
-        >
-          {element?.content || "No content"}
-        </p>
+        {element?.headline && (
+          <h1
+            id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e105-8556e103"
+            className="stage__heading"
+          >
+            <Interweave content={element.headline} />
+          </h1>
+        )}
+        
+        {element?.content && (
+          <p
+            id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e107-8556e103"
+            className="stage__text spacing--top-60"
+          >
+            <Interweave content={element.content} />
+          </p>
+        )}
       </div>
       <figure
         id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e109-8556e103"

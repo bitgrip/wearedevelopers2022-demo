@@ -5,6 +5,5 @@
     "eamodio.gitlens",
     "github.copilot",
     "sonarsource.sonarlint-vscode",
-    "bradlc.vscode-tailwindcss"
   ]
 }
