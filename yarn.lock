@@ -7115,7 +7115,7 @@ interpret@^2.2.0:
 
 interweave@^13.0.0:
   version "13.0.0"
-  resolved "https://nexus.bitgrip.berlin/repository/npm/interweave/-/interweave-13.0.0.tgz#68fdaa6bde65cf296ba74829bb3746d2a5455a2b"
+  resolved "https://registry.yarnpkg.com/interweave/-/interweave-13.0.0.tgz#68fdaa6bde65cf296ba74829bb3746d2a5455a2b"
   dependencies:
     escape-html "^1.0.3"
 
@@ -9816,7 +9816,7 @@ react-router@6.3.0, react-router@^6.0.0:
 
 react@^18.1.0:
   version "18.1.0"
-  resolved "https://nexus.bitgrip.berlin/repository/npm/react/-/react-18.1.0.tgz#6f8620382decb17fdc5cc223a115e2adbf104890"
+  resolved "https://registry.yarnpkg.com/react/-/react-18.1.0.tgz#6f8620382decb17fdc5cc223a115e2adbf104890"
   dependencies:
     loose-envify "^1.1.0"
 
