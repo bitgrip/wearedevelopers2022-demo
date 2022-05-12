@@ -1,4 +1,4 @@
-name: Check the code
+name: Deploy Pipeline
 
 on:
   push:
@@ -23,19 +23,8 @@ jobs:
     - run: yarn
     - run: yarn lint
 
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'yarn'
-    - run: yarn
-    - run: yarn build
-
   test_unittests:
+    needs: check
     strategy:
       matrix:
         jestgroup: ['coremedia/types', 'logic']
@@ -56,3 +45,23 @@ jobs:
           name: JEST Report - ${{ matrix.jestgroup }}            # Name of the check run which will be created
           path: reports/jest-*.xml    # Path to test results
           reporter: jest-junit        # Format of test results
+
+  build:
+    needs: test_unittests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'yarn'
+    - run: yarn
+    - run: yarn build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: curl -X POST -d '{}' ${{ NETLIFY_DEPLOY_HOOK_URL }}
