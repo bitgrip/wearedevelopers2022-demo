@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import { List } from '../List/List';
 import { IJobSearch, IFilter } from "../../types/elements/JobSearch";
 
@@ -7,8 +7,8 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
   const [visibleJobList, setVisibleJobList] = useState(list);
 
   const [filter, updateFilter] = useState<IFilter[]>( filterList ?
-    [ 
-      { type: 'all', label: 'all', isChecked: true },
+    [
+      { id: 'all', type: 'all', label: 'all', isChecked: true },
       ...filterList
     ] : []
   );
@@ -56,7 +56,7 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
           </div>
         </div>
       )}
-      <List list={visibleJobList} />
+      <List id={''} type={''} list={visibleJobList} />
     </div >
   );
 };

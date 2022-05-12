@@ -16,7 +16,7 @@ export const Header: FC<HeaderProps> = ({  }) => {
                     <g>
                       <path className="st0" fill="#FAFA61" d="M7,25.4L7,25.4V25v-0.3v0c0,0,4.2-0.7,23-19.6l-5-5L0,25l25,25l5-5C11.2,26.1,7,25.4,7,25.4z"></path>
                       <path className="st1" fill="#3CFAE3" d="M83,24.6L83,24.6V25v0.3v0c0,0-4.2,0.7-23,19.6l5,5l25-25L65,0l-5,5C78.8,23.9,83,24.6,83,24.6z"></path>
-                      
+
                         <rect x="27.3" y="21.5" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -4.4975 39.1422)" className="st2" fill="#F94D49" width="35.4" height="7.1"></rect>
                     </g>
                     <g className="svg-typo">
@@ -42,6 +42,6 @@ export const Header: FC<HeaderProps> = ({  }) => {
           </div>
         </div>
       </header>
-      </>
+    </>
   );
 };
