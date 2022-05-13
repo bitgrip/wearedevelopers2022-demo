@@ -62,6 +62,11 @@
     "node": ">=16.14.0"
   },
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "./tsconfig.test.json"
+      }
+    },
     "preset": "ts-jest",
     "testEnvironment": "jsdom",
     "runner": "groups",
