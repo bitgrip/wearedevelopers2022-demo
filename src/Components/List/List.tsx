@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { IList } from "../../types/elements/List";
 
 export const List: FC<IList> = ({ list }) => {
