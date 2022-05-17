@@ -23,7 +23,7 @@ jobs:
     - run: yarn
     - run: yarn lint
 
-  test_unittests:
+  unitTests:
     needs: check
     strategy:
       matrix:
@@ -46,8 +46,8 @@ jobs:
           path: reports/jest-*.xml
           reporter: jest-junit
 
-  test_func:
-    needs: test_unittests
+  funcionalTests:
+    needs: unitTests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -67,7 +67,7 @@ jobs:
           reporter: jest-junit
 
   build:
-    needs: test_func
+    needs: funcionalTests
     runs-on: ubuntu-latest
 
     steps:
