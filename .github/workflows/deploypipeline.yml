@@ -27,7 +27,7 @@ jobs:
     needs: check
     strategy:
       matrix:
-        jestgroup: ['coremedia/types', 'logic']
+        jestgroup: ['cms/types', 'logic']
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
