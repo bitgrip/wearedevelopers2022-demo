@@ -95,7 +95,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           <Container>
             <Row>
               {slug === "jobs" && (
-                <JobSearch list={jobList} filterList={filterList} />
+                <JobSearch id="jobsearch" type="jobsearch" list={jobList} filterList={filterList} />
               )}
             </Row>
           </Container>

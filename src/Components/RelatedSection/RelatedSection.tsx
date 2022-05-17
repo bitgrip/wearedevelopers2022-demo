@@ -1,7 +1,6 @@
 import axios from "axios";
 import { FC } from "react";
 import useSWR from "swr";
-import { Placement } from "../../types/layout/Placement";
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data.data);
 
@@ -27,7 +26,7 @@ export const RelatedSection: FC<RelatedSectionProps> = ({ path }) => {
       </div>
     );
 
-  const placement: Placement = data;
+  const placement = data;
 
   return (
     <div>

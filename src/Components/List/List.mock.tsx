@@ -1,6 +1,8 @@
 import { IList } from "../../types/elements/List";
 
 export const single:IList = {
+  id: "singleList",
+  type: "list",
   list: [{
     key: 'default',
     link: '/#',
@@ -10,6 +12,8 @@ export const single:IList = {
 };
 
 export const multi:IList = {
+  id: "multiList",
+  type: "list",
   list: [{
     key: 'default',
     link: '/#',

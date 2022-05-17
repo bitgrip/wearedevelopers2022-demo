@@ -1,8 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import {
-  searchJobOffers,
-  SearchJobOffersResponse,
-} from "../../src/StoryblokClient/Queries/SearchJobOffers/searchJobOffers";
 
 /**
  * @swagger
@@ -31,17 +27,14 @@ import {
  */
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<SearchJobOffersResponse>
+  res: NextApiResponse/* TODO <ReponseType>*/
 ) {
   const { country, position } = req.query;
 
-  const data: SearchJobOffersResponse | null = await searchJobOffers({
-    country: <string>country,
-    position: <string>position,
-  });
+  const data = null;
 
   if (!data)
-    return res.status(204).end("Could not find any matching jo.b offer");
+    return res.status(204).end("Could not find any matching job offer");
 
   return res.status(200).json(data);
 }
