@@ -1,3 +1,4 @@
+[![Deploy Pipeline](https://github.com/bitgrip/wearedevelopers2022-demo/actions/workflows/deploypipeline.yml/badge.svg?branch=main)](https://github.com/bitgrip/wearedevelopers2022-demo/actions/workflows/deploypipeline.yml)
 # WeAreDevelopers 2022
 
 
