@@ -79,9 +79,3 @@ jobs:
     - run: yarn
     - run: yarn build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - run: curl -X POST -d '{}' ${{ secrets.NETLIFY_DEPLOY_HOOK_URL }}
