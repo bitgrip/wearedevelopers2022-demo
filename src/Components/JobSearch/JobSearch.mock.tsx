@@ -2,10 +2,10 @@ import { IFilter, IJobSearch } from "../../types/elements/JobSearch";
 import { IListElement } from "../../types/elements/List";
 
 export const single: IJobSearch = {
-  id: '',
-  type: '',
+  type: "",
   list: [
     {
+      jobid: "001",
       key: "default",
       link: "/#",
       title: "Skipper (w/m/d), Initiativbewerbung",
@@ -16,42 +16,49 @@ export const single: IJobSearch = {
 
 export const jobList: IListElement[] = [
   {
+    jobid: "001",
     key: "default",
     link: "/#",
     title: "Skipper (w/m/d), Initiativbewerbung",
     tag: "Skipper",
   },
   {
+    jobid: "002",
     key: "frontend",
     link: "/#",
     title: "Senior Frontend-Entwickler (w/m/d)",
     tag: "Frontend",
   },
   {
+    jobid: "003",
     key: "frontend",
     link: "/#",
     title: "Frontend-Entwickler (w/m/d)",
     tag: "Frontend",
   },
   {
+    jobid: "004",
     key: "qa",
     link: "/#",
     title: "Software-Tester (w/m/d)",
     tag: "QA",
   },
   {
+    jobid: "005",
     key: "backend",
     link: "/#",
     title: "Backend-Entwickler (w/m/d)",
     tag: "Backend",
   },
   {
+    jobid: "006",
     key: "architecture",
     link: "/#",
     title: "Software Architekt (w/m/d)",
     tag: "Architecture",
   },
   {
+    jobid: "007",
     key: "operations",
     link: "/#",
     title: "Operations Engineer (w/m/d)",
@@ -61,43 +68,36 @@ export const jobList: IListElement[] = [
 
 export const filterList: IFilter[] = [
   {
-    id: '',
     type: "default",
     label: "Skipper",
     isChecked: false,
   },
   {
-    id: '',
     type: "frontend",
     label: "Frontend",
     isChecked: false,
   },
   {
-    id: '',
     type: "po",
     label: "PO",
     isChecked: false,
   },
   {
-    id: '',
     type: "backend",
     label: "Backend",
     isChecked: false,
   },
   {
-    id: '',
     type: "operations",
     label: "Operations",
     isChecked: false,
   },
   {
-    id: '',
     type: "qa",
     label: "QA",
     isChecked: false,
   },
   {
-    id: '',
     type: "architecture",
     label: "Architecture",
     isChecked: false,
@@ -105,8 +105,7 @@ export const filterList: IFilter[] = [
 ];
 
 export const multi: IJobSearch = {
-  id: '',
-  type: '',
+  type: "",
   filterList: filterList,
   list: jobList,
 };

@@ -1,25 +1,28 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { jobList } from "../../src/Components/JobSearch/JobSearch.mock";
+import { IListElement } from "../../src/types/elements/List";
+
+interface IApiJobsResponse {
+  filter: string;
+  results: number;
+  jobs: IListElement[];
+}
 
 /**
  * @swagger
  * /api/jobs:
  *   get:
- *     summary: Searches for job offers by country or position.
+ *     summary: Searches for job offers by tag.
  *     description:
  *     tags:
- *       - Search
+ *       - Jobs
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: country
- *         description: Country.
+ *       - name: tag
+ *         description: Tag
  *         in: query
- *         required: true
- *         type: string
- *       - name: position
- *         description: Position.
- *         in: query
- *         required: true
+ *         required: false
  *         type: string
  *     responses:
  *       200:
@@ -27,11 +30,25 @@ import type { NextApiRequest, NextApiResponse } from "next";
  */
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse/* TODO <ReponseType>*/
+  res: NextApiResponse<IApiJobsResponse>
 ) {
-  const { country, position } = req.query;
+  const { tag } = req.query;
 
-  const data = null;
+  const pureData: IListElement[] = jobList;
+
+  const filteredData = (
+    tag && tag !== "all"
+      ? pureData.filter((job: IListElement) => job.key === tag)
+      : pureData
+  ).map((job: IListElement) => {
+    return { ...job, apiPath: `/api/jobs/${job.jobid}` };
+  });
+
+  const data: IApiJobsResponse = {
+    filter: (tag as string) || "all",
+    results: filteredData.length,
+    jobs: filteredData,
+  };
 
   if (!data)
     return res.status(204).end("Could not find any matching job offer");

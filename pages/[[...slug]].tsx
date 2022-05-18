@@ -35,9 +35,7 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
   let pageContent: PageContentResponse | undefined = undefined;
 
   try {
-    [pageContent] = await Promise.all([
-      getPageContent({ slug }),
-    ]);
+    [pageContent] = await Promise.all([getPageContent({ slug })]);
   } catch (error) {
     console.error("Could not fetch data.");
   }
@@ -70,7 +68,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
   }
   */
 
-  console.log(pageContent);
+  // console.log(pageContent);
 
   return (
     <div className="bg-white">
@@ -79,7 +77,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
         <meta name="description" content={`Hallo`} />
         <link rel="canonical" href={`/fghjk/`} />
       </Head>
-      <body className="body--general">
+      <body id="page" className="body--general">
         <Header />
         <div className="content-wrapper">
           <Container>
@@ -95,7 +93,12 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           <Container>
             <Row>
               {slug === "jobs" && (
-                <JobSearch id="jobsearch" type="jobsearch" list={jobList} filterList={filterList} />
+                <JobSearch
+                  id="jobsearch"
+                  type="jobsearch"
+                  list={jobList}
+                  filterList={filterList}
+                />
               )}
             </Row>
           </Container>

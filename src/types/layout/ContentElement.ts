@@ -1,5 +1,5 @@
 export interface IContentElement {
-  id: string;
+  id?: string;
   type: string;
   data?: any;
 }
