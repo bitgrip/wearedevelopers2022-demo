@@ -17,10 +17,10 @@ interface IApiJobResponse {
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: tag
- *         description: Tag
- *         in: query
- *         required: false
+ *       - name: id
+ *         description: Job id
+ *         in: path
+ *         required: true
  *         type: string
  *     responses:
  *       200:
@@ -34,7 +34,9 @@ export default async function handler(
 
   const pureData: IListElement[] = jobList;
 
-  const filteredData = id ? pureData.filter((job: any) => job.id === id) : [];
+  const filteredData = id
+    ? pureData.filter((job: any) => job.jobid === id)
+    : [];
 
   const data: IApiJobResponse = {
     job:
