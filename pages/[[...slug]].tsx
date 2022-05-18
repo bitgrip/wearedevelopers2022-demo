@@ -73,9 +73,9 @@ export default function PageLayout(props: SSRPageLayoutProps) {
   return (
     <div className="bg-white">
       <Head>
-        <title>TEST</title>
+        <title>Join the #bestteamintown</title>
         <meta name="description" content={`Hallo`} />
-        <link rel="canonical" href={`/fghjk/`} />
+        <link rel="canonical" href={`/${slug}/`} />
       </Head>
       <body id="page" className="body--general">
         <Header />
