@@ -9,7 +9,6 @@ on:
 env:
   NODE_VERSION: 16.x
 
-
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -77,6 +76,8 @@ jobs:
           cache: 'yarn'
       - run: yarn
       - run: yarn chromatic:ci
+        env:
+          CHROMATIC_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
 
       - name: Test Report
         uses: mikepenz/action-junit-report@v3
