@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Interweave } from 'interweave';
+import { Interweave } from "interweave";
 import { IStage } from "../../types/elements/Stage";
 
 export interface StageProps {
@@ -20,7 +20,7 @@ export const Stage: FC<StageProps> = ({ element }) => {
             <Interweave content={element.headline} />
           </h1>
         )}
-        
+
         {element?.content && (
           <p
             id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e107-8556e103"
@@ -38,7 +38,7 @@ export const Stage: FC<StageProps> = ({ element }) => {
           src="https://uploads-ssl.webflow.com/61c07e84c073699429d75cbe/623b239953381930dfef01e1_jobs.gif"
           loading="lazy"
           alt=""
-          className="stage__image-media"
+          className="stage__image-media chromatic-ignore"
         />
       </figure>
     </div>

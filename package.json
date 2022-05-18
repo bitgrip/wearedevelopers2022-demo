@@ -13,7 +13,8 @@
     "test:watch": "jest --watch --maxWorkers=25%",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=$CHROMATIC_TOKEN",
+    "chromatic": "npx chromatic --only-changed --project-token=$CHROMATIC_TOKEN",
+    "chromatic:ci": "npx chromatic --ci --junit-report ./reports/chromatic-junit.xml --project-token=$CHROMATIC_TOKEN",
     "storyblok-types": "apollo service:download --endpoint=$STORYBLOK_GRAPHQL_ENDPOINT?token=$STORYBLOK_GRAPHQL_TOKEN src/StoryblokClient/Schema/graphql-schema.json && apollo codegen:generate --localSchemaFile=src/StoryblokClient/Schema/graphql-schema.json --target=typescript --tagName=gql && jest --group=storyblok/types"
   },
   "dependencies": {

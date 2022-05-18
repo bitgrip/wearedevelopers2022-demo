@@ -76,7 +76,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
       - run: yarn
-      - run: yarn chromatic
+      - run: yarn chromatic:ci
 
       - name: Test Report
         uses: dorny/test-reporter@v1
