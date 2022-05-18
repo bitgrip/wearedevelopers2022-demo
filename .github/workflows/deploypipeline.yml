@@ -79,12 +79,11 @@ jobs:
       - run: yarn chromatic:ci
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: mikepenz/action-junit-report@v3
         if: success() || failure()
         with:
-          name: jUnit Report - screenshots
-          path: reports/chromatic-junit.xml
-          reporter: jest-junit
+          name: Chromatic Report - screenshots
+          report_paths: '**/reports/chromatic-*.xml'
 
   build:
     needs: screenshotRegressionTests
