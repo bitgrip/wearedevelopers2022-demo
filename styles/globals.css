@@ -101,7 +101,7 @@ html,
   box-shadow: 0px 0px 3px 1px #3898ec;
 }
 
-body {
+body#page, .sb-show-main, .sb-main-padded {
   background-color: #0f1217;
   font-family: Rightgrotesk;
   color: #333;
@@ -281,7 +281,7 @@ label {
   align-items: stretch;
 }
 
-.body--general {
+body#page.body--general {
   display: block;
   min-width: 280px;
   -webkit-transition: opacity 200ms ease;
