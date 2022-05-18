@@ -1,13 +1,6 @@
 module.exports = {
   stories: ['../src/**/*.stories.@(tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', {
-    name: '@storybook/addon-postcss',
-    options: {
-      postcssLoaderOptions: {
-        implementation: require('postcss'),
-      },
-    },
-  },],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   typescript: {
     check: false,
     checkOptions: {},
