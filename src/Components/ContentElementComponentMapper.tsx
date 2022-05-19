@@ -1,11 +1,11 @@
 import { IContentElement } from "../types/layout/ContentElement";
 import { Stage } from "./Stage/Stage";
-import { Content } from './Content/Content';
+import { Content } from "./Content/Content";
+import { JobSearch } from "./JobSearch/JobSearch";
 
 const ContentElementComponentMap: any = {
   Stage: Stage,
   Contentblock: Content,
-  cvb: Stage,
 };
 
 export const ContentElementComponentMapper = (

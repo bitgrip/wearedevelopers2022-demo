@@ -17,7 +17,7 @@ export const getPageContent = async (
   query?: PageContentQuery
 ): Promise<PageContentResponse> => {
   try {
-    console.debug(`Execute cms.getPageContent(${toString(values(query))})`);
+    console.log(`Execute cms.getPageContent(${toString(values(query))})`);
 
     // fetch data
     const pageContentResponseData = await executePageContentQuery(
@@ -32,7 +32,7 @@ export const getPageContent = async (
       data: page,
     };
   } catch (error) {
-    console.error((error as Error).message);
+    console.error(error);
     return { status: 500, data: null };
   }
 };
