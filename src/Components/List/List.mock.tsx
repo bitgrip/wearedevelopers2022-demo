@@ -8,8 +8,8 @@ export const single: IList = {
       jobid: "001",
       key: "default",
       link: "/#",
-      title: "Skipper (w/m/d), Initiativbewerbung",
-      tag: "Skipper",
+      title: "Skipper (w/m/d), Initiativbewerbung Skipper (w/m/d), Initiativbewerbung Skipper (w/m/d), Initiativbewerbung Skipper (w/m/d), Initiativbewerbung",
+      tag: "Skipper verylong position name",
     },
   ],
 };
@@ -38,6 +38,13 @@ export const multi: IList = {
       link: "/#",
       title: "Frontend-Entwickler (w/m/d)",
       tag: "Frontend",
+    },
+    {
+      jobid: "004",
+      key: "backend",
+      link: "/#",
+      title: "Super-Duper-Entwickler who will be responsible for literally everything you can imagine (w/m/d)",
+      tag: "Very looooooong tag",
     },
   ],
 };

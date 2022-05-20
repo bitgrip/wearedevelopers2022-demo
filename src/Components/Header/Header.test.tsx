@@ -2,7 +2,7 @@ import { render, screen } from '../../test/test-utils';
 import { Header } from './Header';
 
 /**
- * @group func
+ * @group unit
  */
 
 test('should render logo', () => {
