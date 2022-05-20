@@ -36,4 +36,10 @@ describe('filtering', () => {
     await userEvent.click(allButton);
     expect(screen.getAllByRole('listitem')).toHaveLength(7);
   });
+
+  test('should display a message, if no offers are found', async () => {
+    const poButton = screen.getByRole('button', { name: 'PO' });
+    await userEvent.click(poButton);
+    expect(screen.getByText('No offers at the moment')).toBeInTheDocument();
+  });
 });

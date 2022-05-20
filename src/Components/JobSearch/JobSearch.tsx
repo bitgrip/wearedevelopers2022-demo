@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { List } from '../List/List';
 import { IJobSearch, IFilter } from "../../types/elements/JobSearch";
+import {Interweave} from "interweave";
 
 export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
@@ -39,6 +40,13 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
     }
   };
 
+  // TODO: styles
+  const noOffersMessage = (
+    <p className="stage__text spacing--top-60">
+      <Interweave content="No offers at the moment" />
+    </p>
+  );
+
   return (
     <div>
       {filter && filter.length > 0 && (
@@ -56,7 +64,7 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
           </div>
         </div>
       )}
-      <List id={''} type={''} list={visibleJobList} />
+      {visibleJobList.length ? <List id={''} type={''} list={visibleJobList}/> : noOffersMessage}
     </div >
   );
 };
