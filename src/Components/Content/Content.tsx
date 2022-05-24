@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Interweave } from "interweave";
 import { IContent } from "../../types/elements/Content";
+import { Headline } from "../Headline/Headline";
 import { Richtext } from "../Richtext/Richtext";
 
 export interface ContentProps {
@@ -16,9 +16,7 @@ export const Content: FC<ContentProps> = ({ element }) => {
         className="content-heading__content"
       >
         {element?.headline && (
-          <h2>
-            <Interweave content={element.headline} />
-          </h2>
+          <Headline content={element.headline} />
         )}
         {element?.content && (
           <Richtext content={element.content} />
