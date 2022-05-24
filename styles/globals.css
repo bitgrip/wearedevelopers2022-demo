@@ -837,7 +837,8 @@ body#page.body--general {
   flex-basis: 40%;
 }
 
-.filterbar {
+.filterbar,
+.no-results {
   display: flex;
   -ms-grid-column-span: -4;
   grid-column-end: -2;

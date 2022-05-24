@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Interweave } from 'interweave';
 import { IStage } from "../../types/elements/Stage";
 import { Richtext } from "../Richtext/Richtext";
+import { Headline } from "../Headline/Headline";
 
 export interface StageProps {
   element: IStage;
@@ -14,12 +15,7 @@ export const Stage: FC<StageProps> = ({ element }) => {
         className="stage__content"
       >
         {element?.headline && (
-          <h1
-            id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e105-8556e103"
-            className="stage__heading"
-          >
-            <Interweave content={element.headline} />
-          </h1>
+          <Headline content={element.headline} level='h1' />
         )}
         
         {element?.content && (
