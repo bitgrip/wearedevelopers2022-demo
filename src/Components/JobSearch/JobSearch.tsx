@@ -42,7 +42,9 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
   // TODO: styles
   const noOffersMessage = (
-    <Richtext content="No offers at the moment" />
+    <div className="grid">
+      <Richtext className="no-results" content="No offers at the moment" />
+    </div>
   );
 
   return (
