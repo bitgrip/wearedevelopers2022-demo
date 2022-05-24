@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { List } from '../List/List';
 import { IJobSearch, IFilter } from "../../types/elements/JobSearch";
-import {Interweave} from "interweave";
+import { Richtext } from "../Richtext/Richtext";
 
 export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
@@ -42,9 +42,7 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
   // TODO: styles
   const noOffersMessage = (
-    <p className="stage__text spacing--top-60">
-      <Interweave content="No offers at the moment" />
-    </p>
+    <Richtext content="No offers at the moment" />
   );
 
   return (

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Interweave } from 'interweave';
 import { IStage } from "../../types/elements/Stage";
+import { Richtext } from "../Richtext/Richtext";
 
 export interface StageProps {
   element: IStage;
@@ -22,12 +23,7 @@ export const Stage: FC<StageProps> = ({ element }) => {
         )}
         
         {element?.content && (
-          <p
-            id="w-node-_7f1ce50c-3a48-99d0-12e9-d20d8556e107-8556e103"
-            className="stage__text spacing--top-60"
-          >
-            <Interweave content={element.content} />
-          </p>
+          <Richtext content={element.content} />
         )}
       </div>
       <figure

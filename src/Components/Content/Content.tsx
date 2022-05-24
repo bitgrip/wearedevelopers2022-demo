@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { Interweave } from "interweave";
 import { IContent } from "../../types/elements/Content";
+import { Richtext } from "../Richtext/Richtext";
 
 export interface ContentProps {
   element: IContent;
 }
 
 export const Content: FC<ContentProps> = ({ element }) => {
-  console.log(element);
 
   return (
     <div className="content-heading content-heading--paragraph grid">
@@ -21,9 +21,7 @@ export const Content: FC<ContentProps> = ({ element }) => {
           </h2>
         )}
         {element?.content && (
-          <p className="stage__text spacing--top-60">
-            <Interweave content={element.content} />
-          </p>
+          <Richtext content={element.content} />
         )}
       </div>
     </div>
