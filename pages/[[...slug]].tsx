@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { join } from "lodash";
@@ -8,22 +8,24 @@ import { Container } from "../src/Components/Container/Container";
 import { Row } from "../src/Components/Row/Row";
 import { Page } from "../src/types/layout/Page";
 import { JobSearch } from "../src/Components/JobSearch/JobSearch";
-import {
-  filterList,
-  jobList,
-} from "../src/Components/JobSearch/JobSearch.mock";
+import { filterList } from "../src/Components/JobSearch/JobSearch.mock";
 import {
   getPageContent,
   PageContentResponse,
 } from "../src/StoryblokClient/Queries/GetPageContent/getPageContent";
 import { ContentElementComponentMapper } from "../src/Components/ContentElementComponentMapper";
-import { IContentElement } from "../src/types/layout/ContentElement";
 import { StageMock } from "../src/Components/Stage/Stage.mock";
 import { ContentMock } from "../src/Components/Content/Content.mock";
+import {
+  getJobList,
+  JobListResponse,
+} from "../src/StoryblokClient/Queries/GetJobList/getJobList";
+import { IListElement } from "../src/types/elements/List";
 
 export interface SSRPageLayoutProps {
   slug: string;
   pageContent: Page | null;
+  jobList: IListElement[] | null;
 }
 
 export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
@@ -33,9 +35,13 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
   console.debug("getStaticProps for " + slug);
 
   let pageContent: PageContentResponse | undefined = undefined;
+  let jobList: JobListResponse | undefined = undefined;
 
   try {
-    [pageContent] = await Promise.all([getPageContent({ slug })]);
+    [pageContent, jobList] = await Promise.all([
+      getPageContent({ slug }),
+      getJobList(),
+    ]);
   } catch (error) {
     console.error("Could not fetch data.");
   }
@@ -44,6 +50,7 @@ export const getStaticProps: GetStaticProps<SSRPageLayoutProps> = async ({
     props: {
       slug: slug,
       pageContent: pageContent?.data || null,
+      jobList: jobList?.data || null,
     },
     revalidate: 3600,
   };
@@ -54,7 +61,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default function PageLayout(props: SSRPageLayoutProps) {
-  const { slug, pageContent } = props;
+  const { slug, pageContent, jobList } = props;
 
   /*
   if (!navigation) {
@@ -92,7 +99,7 @@ export default function PageLayout(props: SSRPageLayoutProps) {
           </Container>
           <Container>
             <Row>
-              {slug === "jobs" && (
+              {jobList && (
                 <JobSearch
                   id="jobsearch"
                   type="jobsearch"
