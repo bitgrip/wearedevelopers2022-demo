@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { List } from '../List/List';
 import { IJobSearch, IFilter } from "../../types/elements/JobSearch";
 import { Richtext } from "../Richtext/Richtext";
+import { Filterbar } from "../Filterbar/Filterbar";
 
 export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
@@ -40,7 +41,6 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
     }
   };
 
-  // TODO: styles
   const noOffersMessage = (
     <div className="grid">
       <Richtext className="no-results" content="No offers at the moment" />
@@ -49,21 +49,7 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
   return (
     <div>
-      {filter && filter.length > 0 && (
-        <div className="grid">
-          <div className="filterbar">
-            {filter.map((filterItem, filterIndex) => (
-              <button
-                className={`tags filter-btn--${filterItem.type} ${filterItem.isChecked ? 'filter-btn--active' : ''}`}
-                onClick={() => handleFilterClick(filterItem.type)}
-                key={filterIndex}
-              >
-                {filterItem.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      <Filterbar filterList={filter} onClick={(filterItemType) => handleFilterClick(filterItemType)} />
       {visibleJobList.length ? <List id={''} type={''} list={visibleJobList}/> : noOffersMessage}
     </div >
   );
