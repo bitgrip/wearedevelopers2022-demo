@@ -20,12 +20,12 @@ const listItemIsNotInTheDocument = () => {
   expect(screen.queryByRole('listitem')).not.toBeInTheDocument();
 };
 
-describe('should render a list item with correct properties:', () => {
+describe('should render a list with correct properties:', () => {
   beforeEach(() => {
     render(<List list={list} type="list" />);
   });
 
-  test('list item', () => {
+  test('list items', () => {
     expect(screen.getAllByRole('listitem')).toHaveLength(1);
   });
 
