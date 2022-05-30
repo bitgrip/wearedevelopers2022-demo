@@ -20,13 +20,26 @@ const listItemIsNotInTheDocument = () => {
   expect(screen.queryByRole('listitem')).not.toBeInTheDocument();
 };
 
-test('should render list item with correct: title, tag, link', () => {
-  render(<List list={list} type="list" />);
-  expect(screen.getByRole('listitem')).toBeInTheDocument();
-  expect(screen.getAllByRole('listitem')).toHaveLength(1);
-  expect(screen.getByText('Frontend').closest('a')).toHaveAttribute('href', '/#');
-  expect(screen.getByText('Frontend')).toHaveClass('tags--frontend');
-  expect(screen.getByText('Frontend-Entwickler (w/m/d)')).toBeInTheDocument();
+describe('should render a list item with correct properties:', () => {
+  beforeEach(() => {
+    render(<List list={list} type="list" />);
+  });
+
+  test('list item', () => {
+    expect(screen.getAllByRole('listitem')).toHaveLength(1);
+  });
+
+  test('link', () => {
+    expect(screen.getByText('Frontend').closest('a')).toHaveAttribute('href', '/#');
+  });
+
+  test('CSS class', () => {
+    expect(screen.getByText('Frontend')).toHaveClass('tags--frontend');
+  });
+
+  test('title', () => {
+    expect(screen.getByText('Frontend-Entwickler (w/m/d)')).toBeInTheDocument();
+  });
 });
 
 describe('should not render list item, if any of properties is missing:', () => {
