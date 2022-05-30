@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { jobList } from "../../src/Components/JobSearch/JobSearch.mock";
+import {
+  getJobList,
+  JobListResponse,
+} from "../../src/StoryblokClient/Queries/GetJobList/getJobList";
 import { IListElement } from "../../src/types/elements/List";
 
 interface IApiJobsResponse {
@@ -34,12 +37,18 @@ export default async function handler(
 ) {
   const { tag } = req.query;
 
-  const pureData: IListElement[] = jobList;
+  // fetch jobs
+  const pureData: JobListResponse = await getJobList();
+  if (!pureData.data || pureData.data.length === 0) {
+    return res.status(204).end("Could not find any job offer");
+  }
+
+  const jobList: IListElement[] = pureData.data;
 
   const filteredData = (
     tag && tag !== "all"
-      ? pureData.filter((job: IListElement) => job.key === tag)
-      : pureData
+      ? jobList.filter((job: IListElement) => job.key === tag)
+      : jobList
   ).map((job: IListElement) => {
     return { ...job, apiPath: `/api/jobs/${job.jobid}` };
   });

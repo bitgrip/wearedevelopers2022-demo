@@ -3,7 +3,7 @@ import { pageContent } from "../Mocks/contentElements.mock";
 import { mapCmsPageContentToContentElements } from "./mapCmsPageContentToContentElements";
 
 /**
- * @group cms/types
+ * @group unit/cms/types
  */
 describe("should transform a cms page content body into a list of app content element types", () => {
   test("transform page content body", () => {

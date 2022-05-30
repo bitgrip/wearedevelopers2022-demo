@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Interweave } from 'interweave';
+import { Interweave } from "interweave";
 import { IStage } from "../../types/elements/Stage";
 import { Richtext } from "../Richtext/Richtext";
 import { Headline } from "../Headline/Headline";
@@ -17,7 +17,7 @@ export const Stage: FC<StageProps> = ({ element }) => {
         {element?.headline && (
           <Headline content={element.headline} level='h1' />
         )}
-        
+
         {element?.content && (
           <Richtext content={element.content} />
         )}
@@ -30,7 +30,7 @@ export const Stage: FC<StageProps> = ({ element }) => {
           src="https://uploads-ssl.webflow.com/61c07e84c073699429d75cbe/623b239953381930dfef01e1_jobs.gif"
           loading="lazy"
           alt=""
-          className="stage__image-media"
+          className="stage__image-media chromatic-ignore"
         />
       </figure>
     </div>

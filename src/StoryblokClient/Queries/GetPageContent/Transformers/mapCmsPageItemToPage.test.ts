@@ -2,7 +2,7 @@ import { contentPage } from "../Mocks/page.mock";
 import { mapCmsPageItemToPage } from "./mapCmsPageItemToPage";
 
 /**
- * @group cms/types
+ * @group unit/cms/types
  */
 describe("should transform a cms page item into an app page item type", () => {
   test("transform page item", () => {

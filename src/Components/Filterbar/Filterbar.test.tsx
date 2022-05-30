@@ -3,7 +3,7 @@ import { Filterbar } from './Filterbar';
 import { filterList } from './Filterbar.mock';
 
 /**
- * @group func
+ * @group unit/component
  */
 
 beforeEach(() => {
