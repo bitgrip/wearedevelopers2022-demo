@@ -1,19 +1,10 @@
 import { render, screen  } from '../../test/test-utils';
 import { List } from './List';
+import { single, singleWithEmptyId, singleWithEmptyKey, singleWithEmptyLink, singleWithEmptyTitle, singleWithEmptyTag } from './List.mock';
 
 /**
  * @group unit
  */
-
-const list = [
-  {
-    jobid: "001",
-    key: "frontend",
-    link: "/#",
-    title: "Frontend-Entwickler (w/m/d)",
-    tag: "Frontend",
-  },
-];
 
 const listItemIsNotInTheDocument = () => {
   expect(screen.getByRole('list')).toBeInTheDocument();
@@ -21,7 +12,7 @@ const listItemIsNotInTheDocument = () => {
 };
 
 test('should render list item with correct: title, tag, link', () => {
-  render(<List list={list} type="list" />);
+  render(<List {...single} />);
   expect(screen.getByRole('listitem')).toBeInTheDocument();
   expect(screen.getAllByRole('listitem')).toHaveLength(1);
   expect(screen.getByText('Frontend').closest('a')).toHaveAttribute('href', '/#');
@@ -31,30 +22,27 @@ test('should render list item with correct: title, tag, link', () => {
 
 describe('should not render list item, if any of properties is missing:', () => {
   test('jobid', () => {
-    /* @ts-expect-error */
-    render(<List list={[{ ...list[0], jobid: null }]} type="list" />);
+    render(<List {...singleWithEmptyId} />);
     listItemIsNotInTheDocument();
   });
 
   test('key', () => {
-    render(<List list={[{ ...list[0], key: '' }]} type="list" />);
+    render(<List {...singleWithEmptyKey} />);
     listItemIsNotInTheDocument();
   });
 
   test('link', () => {
-    render(<List list={[{ ...list[0], link: '' }]} type="list" />);
+    render(<List {...singleWithEmptyLink} />);
     listItemIsNotInTheDocument();
   });
 
   test('title', () => {
-    /* @ts-expect-error */
-    render(<List list={[{ ...list[0], title: undefined }]} type="list" />);
+    render(<List {...singleWithEmptyTitle} />);
     listItemIsNotInTheDocument();
   });
 
   test('tag', () => {
-    /* @ts-expect-error */
-    render(<List list={[{ ...list[0], tag: undefined }]} type="list" />);
+    render(<List {...singleWithEmptyTag} />);
     listItemIsNotInTheDocument();
   });
 });
