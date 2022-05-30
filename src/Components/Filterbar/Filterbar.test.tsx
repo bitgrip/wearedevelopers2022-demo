@@ -11,13 +11,13 @@ beforeEach(() => {
 });
 
 describe('filter buttons', () => {
-  test('should render 8 buttons', () => {
+  test('should render 7 buttons', () => {
     const buttons = screen.getAllByRole('button');
-    expect(buttons).toHaveLength(7);
+    expect(buttons).toHaveLength(filterList.length);
   });
 
   test('the first button should have label "Skipper"', () => {
     const buttons = screen.getAllByRole('button');
-    expect(buttons[0]).toHaveTextContent('Skipper');
+    expect(buttons[0]).toHaveTextContent(filterList[0].label);
   });
 });
