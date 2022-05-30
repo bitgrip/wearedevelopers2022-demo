@@ -645,7 +645,7 @@ body#page.body--general {
 }
 
 .filter-btn--all:hover,
-.filter-btn--all.active {
+.filter-btn--all.filter-btn--active {
   color: #fff;
   background-color: transparent;
 }
@@ -658,7 +658,7 @@ body#page.body--general {
 }
 
 .filter-btn--default:hover,
-.filter-btn--default.active {
+.filter-btn--default.filter-btn--active {
     background-color: transparent;
     color: #fff;
 }
@@ -671,7 +671,7 @@ body#page.body--general {
 }
 
 .filter-btn--frontend:hover,
-.filter-btn--frontend.active {
+.filter-btn--frontend.filter-btn--active {
     background-color: transparent;
     color: #fff;
 }
@@ -684,7 +684,7 @@ body#page.body--general {
 }
 
 .filter-btn--backend:hover,
-.filter-btn--backend.active {
+.filter-btn--backend.filter-btn--active {
     background-color: transparent;
     color: #fff;
 }
@@ -697,7 +697,7 @@ body#page.body--general {
 }
 
 .filter-btn--operations:hover,
-.filter-btn--operations.active {
+.filter-btn--operations.filter-btn--active {
     background-color: transparent;
     color: #fff;
 }
@@ -710,7 +710,7 @@ body#page.body--general {
 }
 
 .filter-btn--qa:hover,
-.filter-btn--qa.active {
+.filter-btn--qa.filter-btn--active {
     background-color: transparent;
     color: #fff;
 }
@@ -723,7 +723,7 @@ body#page.body--general {
 }
 
 .filter-btn--architecture:hover,
-.filter-btn--architecture.active {
+.filter-btn--architecture.filter-btn--active {
     background-color: transparent;
     color: #fff;
 }
@@ -736,7 +736,7 @@ body#page.body--general {
 }
 
 .filter-btn--po:hover,
-.filter-btn--po.active {
+.filter-btn--po.filter-btn--active {
     background-color: transparent;
     color: #fff;
 }

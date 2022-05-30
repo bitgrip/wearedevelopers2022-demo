@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { List } from '../List/List';
-import { IJobSearch, IFilter } from "../../types/elements/JobSearch";
+import { IJobSearch, IFilter, FilterType } from "../../types/elements/JobSearch";
 import { Richtext } from "../Richtext/Richtext";
 import { Filterbar } from "../Filterbar/Filterbar";
 
@@ -14,12 +14,10 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
       ...filterList
     ] : []
   );
-  const [filterId, updateFilterId] = useState<string>('all');
-
-  const handleFilterClick = (type: string) => {
+  const handleFilterClick = (type: FilterType) => {
     updateFilter(state =>
       state.map(f => {
-        if (f.label === type) {
+        if (f.type === type) {
           return {
             ...f,
             isChecked: true,
@@ -32,7 +30,6 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
         }
       })
     );
-    updateFilterId(type);
 
     if (type == 'all') {
       setVisibleJobList(list);
@@ -49,7 +46,7 @@ export const JobSearch: FC<IJobSearch> = ({ list, filterList }) => {
 
   return (
     <div>
-      <Filterbar filterList={filter} onClick={(filterItemType) => handleFilterClick(filterItemType)} />
+      <Filterbar filterList={filter} onClick={(filterItemType: FilterType) => handleFilterClick(filterItemType)} />
       {visibleJobList.length ? <List id={''} type={''} list={visibleJobList}/> : noOffersMessage}
     </div >
   );
