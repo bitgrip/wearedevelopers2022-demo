@@ -1,7 +1,7 @@
 import {foo} from "./example";
 
 /**
- * @group logic
+ * @group unit/logic
  */
 describe("example tests", () => {
     test("foo should return 'bar'", () => {

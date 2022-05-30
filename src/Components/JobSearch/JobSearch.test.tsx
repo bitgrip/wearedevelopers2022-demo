@@ -4,7 +4,7 @@ import { JobSearch } from './JobSearch';
 import { multi } from './JobSearch.mock';
 
 /**
- * @group func
+ * @group integration
  */
 
 beforeEach(() => {

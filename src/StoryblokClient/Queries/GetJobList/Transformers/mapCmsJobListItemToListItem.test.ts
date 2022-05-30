@@ -3,7 +3,7 @@ import { mockJobOffer } from "../Mocks/cmsJobListItems.mock";
 import { mapCmsJobListItemToListItem } from "./mapCmsJobListItemToListItem";
 
 /**
- * @group cms/types
+ * @group unit/cms/types
  */
 describe("should transform a cms job list item into a list element type", () => {
   test("transform joboffer list item", () => {

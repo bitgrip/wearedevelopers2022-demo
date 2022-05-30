@@ -2,7 +2,7 @@ import { render, screen  } from '../../test/test-utils';
 import { List } from './List';
 
 /**
- * @group unit
+ * @group unit/component
  */
 
 const list = [

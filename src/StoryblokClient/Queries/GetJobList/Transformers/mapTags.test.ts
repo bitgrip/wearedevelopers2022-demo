@@ -1,7 +1,7 @@
 import { mapTags } from "./mapTags";
 
 /**
- * @group cms/types
+ * @group unit/cms/types
  */
 describe("should filter and map job offer tags", () => {
   test("transform tag array to single tag as string", () => {
