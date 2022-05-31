@@ -21,15 +21,15 @@ describe('should render a list with correct properties:', () => {
   });
 
   test('link', () => {
-    expect(screen.getByText('Frontend').closest('a')).toHaveAttribute('href', '/#');
+    expect(screen.getByText(single.list[0].title).closest('a')).toHaveAttribute('href', '/#');
   });
 
   test('CSS class', () => {
-    expect(screen.getByText('Frontend')).toHaveClass('tags--frontend');
+    expect(screen.getByText(single.list[0].tag)).toHaveClass('tags--default');
   });
 
   test('title', () => {
-    expect(screen.getByText('Frontend-Entwickler (w/m/d)')).toBeInTheDocument();
+    expect(screen.getByText(single.list[0].title)).toBeInTheDocument();
   });
 });
 
