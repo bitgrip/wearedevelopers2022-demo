@@ -20,16 +20,16 @@ describe('should render a list with correct properties:', () => {
     expect(screen.getAllByRole('listitem')).toHaveLength(1);
   });
 
-  test('link', () => {
-    expect(screen.getByText(single.list[0].title).closest('a')).toHaveAttribute('href', '/#');
-  });
-
-  test('CSS class', () => {
-    expect(screen.getByText(single.list[0].tag)).toHaveClass('tags--default');
-  });
-
   test('title', () => {
     expect(screen.getByText(single.list[0].title)).toBeInTheDocument();
+  });
+
+  test('link', () => {
+    expect(screen.getByText(single.list[0].title).closest('a')).toHaveAttribute('href', single.list[0].link);
+  });
+
+  test('tag with css class', () => {
+    expect(screen.getByText(single.list[0].tag)).toHaveClass('tags--default');
   });
 });
 
