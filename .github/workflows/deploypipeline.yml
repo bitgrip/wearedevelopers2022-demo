@@ -69,10 +69,11 @@ jobs:
       - run: yarn
       - run: yarn test --group=integration
         env:
-           STORYBLOK_GRAPHQL_ENDPOINT: https://gapi.storyblok.com/v1/api
+          STORYBLOK_GRAPHQL_ENDPOINT: https://gapi.storyblok.com/v1/api
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
+        if: failure()
         with:
           name: test-report
           path: reports/jest-*.xml
