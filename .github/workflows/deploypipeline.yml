@@ -54,7 +54,7 @@ jobs:
           reporter: jest-junit
 
   integrationTests:
-#    needs: unitTests
+    needs: unitTests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -115,7 +115,7 @@ jobs:
           fail-on-error: true
 
   build:
-#    needs: screenshotRegressionTests
+    needs: screenshotRegressionTests
     runs-on: ubuntu-latest
 
     steps:
