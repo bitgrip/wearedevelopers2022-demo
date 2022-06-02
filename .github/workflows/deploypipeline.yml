@@ -67,9 +67,7 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
-      - run: yarn test --group=integration
-        env:
-          STORYBLOK_GRAPHQL_ENDPOINT: https://gapi.storyblok.com/v1/api
+      - run: STORYBLOK_GRAPHQL_ENDPOINT='https://gapi.storyblok.com/v1/api' yarn test --group=integration
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
