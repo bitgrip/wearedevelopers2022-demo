@@ -27,7 +27,7 @@ jobs:
       - run: yarn lint
 
   unitTests:
-    needs: check
+#    needs: check
     strategy:
       matrix:
         jestgroup: ["unit/cms/types", "unit/logic", "unit/component"]
@@ -54,7 +54,7 @@ jobs:
           reporter: jest-junit
 
   integrationTests:
-    needs: unitTests
+#    needs: unitTests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
