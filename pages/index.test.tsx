@@ -55,7 +55,7 @@ describe("Home", () => {
 
     // Check if the page headline is displayed
     expect(
-      screen.getAllByRole("heading", { level: 1 })[1] // Workaround for duplicated elements
+      screen.getByRole("heading", { level: 1 }) // Workaround for duplicated elements
     ).toHaveTextContent("Jobs bei Bitgrip: Jetzt wechseln zum #bestteamintown");
   });
 
@@ -72,10 +72,10 @@ describe("Home", () => {
 
     // Check if all jobs are displayed
     expect(
-      screen.getAllByText(/Operations Engineer/)[1] // Workaround for duplicated elements
+      screen.getByText(/Operations Engineer/) // Workaround for duplicated elements
     ).toBeInTheDocument();
     expect(
-      screen.getAllByText(/Senior Frontend Engineer/)[1] // Workaround for duplicated elements
+      screen.getByText(/Senior Frontend Engineer/) // Workaround for duplicated elements
     ).toBeInTheDocument();
   });
 
@@ -92,11 +92,11 @@ describe("Home", () => {
     render();
 
     // Click on the filter button "Frontend"
-    userEvent.click(screen.getAllByRole("button", { name: "Frontend" })[1]);
+    userEvent.click(screen.getByRole("button", { name: "Frontend" }));
 
     // Check if only the frontend jobs are displayed
     expect(
-      screen.getAllByText(/Senior Frontend Engineer/)[1] // Workaround for duplicated elements
+      screen.getByText(/Senior Frontend Engineer/) // Workaround for duplicated elements
     ).toBeInTheDocument();
 
     // Debugging tools
