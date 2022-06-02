@@ -27,7 +27,7 @@ jobs:
       - run: yarn lint
 
   unitTests:
-    needs: check
+#    needs: check
     strategy:
       matrix:
         jestgroup: ["unit/cms/types", "unit/logic", "unit/component"]
@@ -54,7 +54,7 @@ jobs:
           reporter: jest-junit
 
   integrationTests:
-    needs: unitTests
+#    needs: unitTests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -68,8 +68,6 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
       - run: yarn test --group=integration
-        env:
-          STORYBLOK_GRAPHQL_ENDPOINT: https://gapi.storyblok.com/v1/api
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
@@ -115,7 +113,7 @@ jobs:
           fail-on-error: true
 
   build:
-    needs: screenshotRegressionTests
+#    needs: screenshotRegressionTests
     runs-on: ubuntu-latest
 
     steps:
