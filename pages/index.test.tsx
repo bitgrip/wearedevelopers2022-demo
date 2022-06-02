@@ -6,6 +6,9 @@ import { graphql } from "msw";
 import { getJobListQueryResponseDataMock } from "../src/StoryblokClient/Queries/GetJobList/Mocks/getJobListQuery.mock";
 import { getPageContentQueryResponseDataMock } from "../src/StoryblokClient/Queries/GetPageContent/Mocks/getPageContentQuery.mock";
 
+/**
+ * @group integration
+ */
 describe("Home", () => {
   const storyblok = graphql.link(process.env.STORYBLOK_GRAPHQL_ENDPOINT || "");
 
