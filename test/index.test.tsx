@@ -59,7 +59,7 @@ describe("Home", () => {
 
     // Check if the page headline is displayed
     expect(
-      screen.getByRole("heading", { level: 1 }) // Workaround for duplicated elements
+      screen.getByRole("heading", { level: 1 }) 
     ).toHaveTextContent("Jobs bei Bitgrip: Jetzt wechseln zum #bestteamintown");
   });
 
@@ -75,14 +75,14 @@ describe("Home", () => {
     render();
 
     // debugging tools
-    // screen.debug(undefined, 100000);
+    screen.debug(screen.getByText(/Operations Engineer/), 100000);
 
     // Check if all jobs are displayed
     expect(
-      screen.getByText(/Operations Engineer/) // Workaround for duplicated elements
+      screen.getByText(/Operations Engineer/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Senior Frontend Engineer/) // Workaround for duplicated elements
+      screen.getByText(/Senior Frontend Engineer/) 
     ).toBeInTheDocument();
   });
 
@@ -103,7 +103,7 @@ describe("Home", () => {
 
     // Check if only the frontend jobs are displayed
     expect(
-      screen.getByText(/Senior Frontend Engineer/) // Workaround for duplicated elements
+      screen.getByText(/Senior Frontend Engineer/) 
     ).toBeInTheDocument();
 
     // Check if the other jobs are not displayed
