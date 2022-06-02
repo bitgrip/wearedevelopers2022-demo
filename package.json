@@ -109,7 +109,7 @@
       "cobertura"
     ],
     "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/src/test/__mocks__/styleMock.js"
+      "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js"
     }
   },
   "jest-junit": {
