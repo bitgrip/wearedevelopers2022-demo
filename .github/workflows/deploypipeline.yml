@@ -73,6 +73,11 @@ jobs:
           STORYBLOK_GRAPHQL_TOKEN: "NOTAREALTOKEN"
           STORYBLOK_GRAPHQL_VERSION: "draft"
 
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: reports/jest-*.xml
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
