@@ -1,4 +1,4 @@
-type ITagList = (string | null)[] | null;
+type ITagList = (string | null)[] | null | undefined;
 
 export const mapTags = (tagList: ITagList): string | null => {
   if (!tagList || tagList.length === 0) {
@@ -12,7 +12,7 @@ export const mapTags = (tagList: ITagList): string | null => {
   }
 
   const filteredByJobofferTag: ITagList = filteredByNullValues.filter(
-    (tag) => tag !== null && tag !== "joboffer"
+    (tag) => tag !== null
   );
 
   if (!filteredByJobofferTag || filteredByJobofferTag.length === 0) {

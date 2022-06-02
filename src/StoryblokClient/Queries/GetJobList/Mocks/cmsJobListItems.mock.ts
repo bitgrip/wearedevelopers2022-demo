@@ -1,9 +1,15 @@
-import { getJobList_PageItems_items } from "../__generated__/getJobList";
+import { getJobList_JobItems_items } from "../__generated__/getJobList";
 
-export const mockJobOffer: getJobList_PageItems_items = {
-  __typename: "PageItem",
+export const mockJobOffer: getJobList_JobItems_items = {
+  __typename: "JobItem",
   uuid: "id123",
-  full_slug: "jobs/senior-frontend-developer",
   name: "Senior Frontend Developer",
-  tag_list: ["frontend", "developer", "joboffer"],
+  content: {
+    __typename: "JobComponent",
+    external_link: {
+      __typename: "Link",
+      url: "https://bitgrip.com/jobs",
+    },
+    tag: ["frontend"],
+  },
 };

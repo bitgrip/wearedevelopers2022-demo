@@ -7,19 +7,29 @@
 // GraphQL query operation: getJobList
 // ====================================================
 
-export interface getJobList_PageItems_items {
-  __typename: "PageItem";
-  uuid: string | null;
-  full_slug: string | null;
-  name: string | null;
-  tag_list: (string | null)[] | null;
+export interface getJobList_JobItems_items_content_external_link {
+  __typename: "Link";
+  url: string;
 }
 
-export interface getJobList_PageItems {
-  __typename: "PageItems";
-  items: (getJobList_PageItems_items | null)[] | null;
+export interface getJobList_JobItems_items_content {
+  __typename: "JobComponent";
+  external_link: getJobList_JobItems_items_content_external_link | null;
+  tag: (string | null)[] | null;
+}
+
+export interface getJobList_JobItems_items {
+  __typename: "JobItem";
+  uuid: string | null;
+  name: string | null;
+  content: getJobList_JobItems_items_content | null;
+}
+
+export interface getJobList_JobItems {
+  __typename: "JobItems";
+  items: (getJobList_JobItems_items | null)[] | null;
 }
 
 export interface getJobList {
-  PageItems: getJobList_PageItems | null;
+  JobItems: getJobList_JobItems | null;
 }

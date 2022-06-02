@@ -1,7 +1,7 @@
 import { IListElement } from "../../../../types/elements/List";
 import {
   getJobList,
-  getJobList_PageItems_items,
+  getJobList_JobItems_items,
 } from "../__generated__/getJobList";
 import { mapCmsJobListItemToListItem } from "./mapCmsJobListItemToListItem";
 
@@ -9,9 +9,9 @@ export const mapCmsPageItemToListItems = (
   jobList: getJobList
 ): IListElement[] => {
   const mappedList: IListElement[] =
-    jobList?.PageItems?.items?.map((jobListItem) => {
+    jobList?.JobItems?.items?.map((jobListItem) => {
       return mapCmsJobListItemToListItem(
-        jobListItem as getJobList_PageItems_items
+        jobListItem as getJobList_JobItems_items
       );
     }) || [];
 

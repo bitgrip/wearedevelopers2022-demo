@@ -2,12 +2,16 @@ import { gql } from "@apollo/client";
 
 export const getJobListQuery = gql`
   query getJobList {
-    PageItems(with_tag: "joboffer") {
+    JobItems {
       items {
         uuid
-        full_slug
         name
-        tag_list
+        content {
+          external_link {
+            url
+          }
+          tag
+        }
       }
     }
   }

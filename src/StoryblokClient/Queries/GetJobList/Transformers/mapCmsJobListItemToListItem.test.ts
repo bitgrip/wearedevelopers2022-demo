@@ -10,10 +10,7 @@ describe("should transform a cms job list item into a list element type", () => 
     const listElement: IListElement = mapCmsJobListItemToListItem(mockJobOffer);
     expect(listElement).toHaveProperty("jobid", "id123");
     expect(listElement).toHaveProperty("title", "Senior Frontend Developer");
-    expect(listElement).toHaveProperty(
-      "link",
-      "jobs/senior-frontend-developer"
-    );
+    expect(listElement).toHaveProperty("link", "https://bitgrip.com/jobs");
     expect(listElement).toHaveProperty("tag", "frontend");
     expect(listElement).toHaveProperty("key", "frontend");
   });
