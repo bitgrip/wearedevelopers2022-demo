@@ -1,5 +1,9 @@
 import "@testing-library/jest-dom";
-import { screen } from "@testing-library/react";
+import {
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import { getPage } from "next-page-tester";
 import { setupServer } from "msw/node";
 import { graphql } from "msw";
@@ -70,6 +74,9 @@ describe("Home", () => {
     const { render } = await getPage({ route: "/" });
     render();
 
+    // debugging tools
+    // screen.debug(undefined, 100000);
+
     // Check if all jobs are displayed
     expect(
       screen.getByText(/Operations Engineer/) // Workaround for duplicated elements
@@ -99,12 +106,14 @@ describe("Home", () => {
       screen.getByText(/Senior Frontend Engineer/) // Workaround for duplicated elements
     ).toBeInTheDocument();
 
-    // Debugging tools
-    // screen.debug(undefined, 100000);
-
     // Check if the other jobs are not displayed
-    // expect(
-    //   await screen.findByText(/Operations Engineer/)
-    // ).not.toBeInTheDocument();
+    waitFor(() => {
+      expect(screen.queryByText(/Operations Engineer/)).not.toBeInTheDocument();
+    });
+
+    // Alternaive way to check if  the other jobs are not displayed
+    // await waitForElementToBeRemoved(() =>
+    //   screen.queryByText(/Operations Engineer/)
+    // );
   });
 });
