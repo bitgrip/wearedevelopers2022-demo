@@ -69,9 +69,7 @@ jobs:
       - run: yarn
       - run: yarn test --group=integration
         env:
-          STORYBLOK_GRAPHQL_ENDPOINT: "https://example.com"
-          STORYBLOK_GRAPHQL_TOKEN: "NOTAREALTOKEN"
-          STORYBLOK_GRAPHQL_VERSION: "draft"
+           STORYBLOK_GRAPHQL_ENDPOINT: https://gapi.storyblok.com/v1/api
 
       - name: Test Report
         uses: dorny/test-reporter@v1
