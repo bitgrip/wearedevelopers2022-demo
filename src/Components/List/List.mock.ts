@@ -43,7 +43,7 @@ export const singleWithLongTitleName: IList = {
   ],
 };
 
-export const singleWithEmptyId: IList = {
+export const singleListWithEmptyId: IList = {
   id: "singleList",
   type: "list",
   list: [
@@ -58,7 +58,7 @@ export const singleWithEmptyId: IList = {
   ],
 };
 
-export const singleWithEmptyKey: IList = {
+export const singleListWithEmptyKey: IList = {
   id: "singleList",
   type: "list",
   list: [
@@ -72,7 +72,7 @@ export const singleWithEmptyKey: IList = {
   ],
 };
 
-export const singleWithEmptyLink: IList = {
+export const singleListWithEmptyLink: IList = {
   id: "singleList",
   type: "list",
   list: [
@@ -86,7 +86,7 @@ export const singleWithEmptyLink: IList = {
   ],
 };
 
-export const singleWithEmptyTitle: IList = {
+export const singleListWithEmptyTitle: IList = {
   id: "singleList",
   type: "list",
   list: [
@@ -100,7 +100,7 @@ export const singleWithEmptyTitle: IList = {
   ],
 };
 
-export const singleWithEmptyTag: IList = {
+export const singleListWithEmptyTag: IList = {
   id: "singleList",
   type: "list",
   list: [
